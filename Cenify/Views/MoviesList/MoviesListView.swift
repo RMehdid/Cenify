@@ -77,7 +77,7 @@ struct MoviesListView: View {
     }
     
     private func toggleScheme() {
-        withAnimation(.smooth){
+        withAnimation {
             switch selectedScheme {
             case .light:
                 self.selectedScheme = .dark
