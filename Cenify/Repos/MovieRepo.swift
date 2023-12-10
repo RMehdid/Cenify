@@ -10,12 +10,14 @@ import Foundation
 class MovieRepo {
     private enum Urls: String {
         case moviesList = "/discover/movie"
-        case getDetails = "rider/upload"
+        case movieDetails = "/{{id}}"
     }
     
     static func getMovies(page: Int) async throws -> [Movie] {
         return try await NetworkManager.shared.get(endpoint: Urls.moviesList.rawValue + "?page=\(page)")
     }
     
-    
+    static func getMovieDetail(_ id: Int) async throws -> MovieDetails {
+        return try await NetworkManager.shared.get(endpoint: Urls.movieDetails.rawValue.replacingOccurrences(of: "{{id}}", with: "\(id)"))
+    }
 }

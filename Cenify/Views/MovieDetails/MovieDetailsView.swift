@@ -8,8 +8,13 @@
 import SwiftUI
 
 struct MovieDetailsView: View {
+    
+    @StateObject private var model = Model()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            PosterCard(imageUrl: <#T##String#>, movieStatus: <#T##String#>, originalLanguage: <#T##String#>)
+        }
     }
 }
 
