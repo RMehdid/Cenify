@@ -24,11 +24,22 @@ struct MoviesListView: View {
             case .loading:
                 EmptyView()
             case .success(let movies):
-                ForEach(movies) { movie in
-                    MovieCard(movie)
+                ScrollView(showsIndicators: false){
+                    LazyVStack{
+                        ForEach(movies) { movie in
+                            MovieCard(movie)
+                                .onAppear{
+                                    if movie.id == movies.last?.id {
+                                        model.loadMoreMovies()
+                                    }
+                                }
+                        }
+                    }
                 }
-            case .failure(let string):
-                EmptyView()
+            case .failure(let error):
+                Spacer()
+                Text(error)
+                Spacer()
             }
         }
         .padding()
