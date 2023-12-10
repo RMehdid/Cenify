@@ -22,6 +22,15 @@ struct PosterCard: View {
                     .placeholder { progress in
                         Color.gray
                     }
+                    .overlay{
+                        LinearGradient(
+                                    gradient: Gradient(stops: [
+                                .init(color: Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)), location: 0),
+                                .init(color: Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)), location: 0.5),
+                                .init(color: Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.7)), location: 1)]),
+                                    startPoint: .top,
+                                    endPoint: .bottom)
+                    }
             }
             VStack{
                 HStack{
@@ -47,10 +56,9 @@ struct PosterCard: View {
     @ViewBuilder
     private func label(_ string: String) -> some View {
         ZStack{
-            
-            
             Text(string)
-                .font(.primary, .medium, 12)
+                .font(.system(size: 12, weight: .medium))
+                .foregroundStyle(Color.white)
                 .padding(.vertical)
                 .padding(.horizontal, 28)
                 .background {
@@ -77,5 +85,5 @@ struct PosterCard: View {
 }
 
 #Preview {
-    PosterCard(imageUrl: "/dB6Krk806zeqd0YNp2ngQ9zXteH.jpg", movieStatus: "Released", originalLanguage: "EN")
+    PosterCard(imageUrl: "https://image.tmdb.org/t/p/w500/sEaLO9s7CIN3fjz8R3Qksum44en.jpg", movieStatus: "Released", originalLanguage: "EN")
 }

@@ -65,8 +65,8 @@ actor NetworkManager: GlobalActor {
                     switch response.result {
                     case .success(let res):
                         do {
-                            let decodedModel = try JSONDecoder().decode(Response<Model>.self, from: res)
-                            continuation.resume(returning: decodedModel.results)
+                            let decodedModel = try JSONDecoder().decode(Model.self, from: res)
+                            continuation.resume(returning: decodedModel)
                         } catch {
                             continuation.resume(throwing: CNError.badReponse)
                         }

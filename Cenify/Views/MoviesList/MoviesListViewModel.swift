@@ -26,7 +26,7 @@ extension MoviesListView {
             self.moviesListUiState = .loading
             Task {
                 do {
-                    moviesList.append(contentsOf: try await MovieRepo.getMovies(page: page))
+                    moviesList.append(contentsOf: try await MovieRepo.getMovies(page: page).results)
                     
                     DispatchQueue.main.async {
                         self.moviesListUiState = .success(self.moviesList)
@@ -35,8 +35,9 @@ extension MoviesListView {
                     if isLoadingMore {
                         self.isLoadingMore = false
                     } else {
-                        
-                        self.moviesListUiState = .failure(error.localizedDescription)
+                        DispatchQueue.main.async {
+                            self.moviesListUiState = .failure(error.localizedDescription)
+                        }
                     }
                 }
             }

@@ -4,6 +4,8 @@
 <dict>
 	<key>BaseUrl</key>
 	<string>https://api.themoviedb.org/3</string>
+	<key>ImageBaseUrl</key>
+	<string>https://image.tmdb.org/t/p/</string>
 	<key>Token</key>
 	<string>eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MTc4ZTQ1NzU5ODZmYmE4OThmOWQ4MWVlNzM2ZGZmNyIsInN1YiI6IjY0NzMyYTkxNWNkMTZlMDEzM2UxZDBkZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ._937uOkzzEpwD7whmThZ5bsep4nYEJsplhEKjpxLdGM</string>
 </dict>

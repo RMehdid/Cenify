@@ -13,7 +13,7 @@ class MovieRepo {
         case movieDetails = "/{{id}}"
     }
     
-    static func getMovies(page: Int) async throws -> [Movie] {
+    static func getMovies(page: Int) async throws -> Response<[Movie]> {
         return try await NetworkManager.shared.get(endpoint: Urls.moviesList.rawValue + "?page=\(page)")
     }
     

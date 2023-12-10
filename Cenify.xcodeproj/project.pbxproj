@@ -27,6 +27,7 @@
 		99A037C02B2645F000964315 /* MovieDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A037BF2B2645F000964315 /* MovieDetails.swift */; };
 		99A037C22B26478500964315 /* PosterCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A037C12B26478500964315 /* PosterCard.swift */; };
 		99A037C42B26545F00964315 /* MovieDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A037C32B26545F00964315 /* MovieDetailsViewModel.swift */; };
+		99A037C62B265B4000964315 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A037C52B265B4000964315 /* Double.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		99A037BF2B2645F000964315 /* MovieDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetails.swift; sourceTree = "<group>"; };
 		99A037C12B26478500964315 /* PosterCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterCard.swift; sourceTree = "<group>"; };
 		99A037C32B26545F00964315 /* MovieDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewModel.swift; sourceTree = "<group>"; };
+		99A037C52B265B4000964315 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				99A037B22B26227A00964315 /* SwiftUI */,
+				99A037C72B265B4300964315 /* Foundation */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -211,6 +214,14 @@
 				99A0377F2B25CAA600964315 /* CenifyApp.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		99A037C72B265B4300964315 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				99A037C52B265B4000964315 /* Double.swift */,
+			);
+			path = Foundation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,6 +302,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99A037C62B265B4000964315 /* Double.swift in Sources */,
 				99A037B12B260DD700964315 /* BackgroundEffect.swift in Sources */,
 				99A037C02B2645F000964315 /* MovieDetails.swift in Sources */,
 				99A037AE2B25F0F800964315 /* MovieCard.swift in Sources */,

@@ -16,13 +16,18 @@ struct MoviesListView: View {
     @State private var selectedScheme: ColorScheme?
     
     var body: some View {
-        VStack {
-            navbar()
+        VStack(spacing: 0){
+            VStack{
+                navbar()
+                Rectangle()
+                    .frame(height: 2)
+                    .opacity(0.4)
+            }
             switch model.moviesListUiState {
             case .empty:
                 EmptyView()
             case .loading:
-                EmptyView()
+                Spacer()
             case .success(let movies):
                 ScrollView(showsIndicators: false){
                     LazyVStack{
@@ -35,6 +40,7 @@ struct MoviesListView: View {
                                 }
                         }
                     }
+                    .padding(.vertical)
                 }
             case .failure(let error):
                 Spacer()
@@ -51,7 +57,7 @@ struct MoviesListView: View {
     private func navbar() -> some View {
         HStack {
             Text("Welcome to Samy’s Collection!")
-                .font(.primary, .semiBold, 20)
+                .font(.system(size: 20, weight: .bold))
             Spacer()
             Button(action: toggleScheme) {
                 Image("ic_mode")
