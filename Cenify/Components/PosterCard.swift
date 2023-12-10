@@ -10,9 +10,18 @@ import Kingfisher
 
 struct PosterCard: View {
     
-    let imageUrl: String
-    let movieStatus: String
-    let originalLanguage: String
+    private let imageUrl: String
+    private let movieStatus: String
+    private let originalLanguage: String
+    
+    private var toggleScheme: () -> Void
+    
+    init(imageUrl: String, movieStatus: String, originalLanguage: String, toggleScheme: @escaping () -> Void) {
+        self.imageUrl = imageUrl
+        self.movieStatus = movieStatus
+        self.originalLanguage = originalLanguage
+        self.toggleScheme = toggleScheme
+    }
     
     var body: some View {
         ZStack{
@@ -35,9 +44,14 @@ struct PosterCard: View {
             VStack{
                 HStack{
                     Spacer()
-                    Image("ic_mode")
-                        .resizable()
-                        .frame(width: 32, height: 32)
+                    Button(action: toggleScheme) {
+                        Image("ic_mode")
+                            .resizable()
+                            .renderingMode(.template)
+                            .frame(width: 32, height: 32)
+                            .foregroundStyle(Color.white)
+                    }
+                    .buttonStyle(PlainButtonStyle())
                 }
                 Spacer()
                 HStack{
@@ -50,7 +64,6 @@ struct PosterCard: View {
         }
         .frame(height: UIScreen.main.bounds.height * 0.6)
         .cornerRadius(26)
-        .padding(.horizontal)
     }
     
     @ViewBuilder
@@ -85,5 +98,7 @@ struct PosterCard: View {
 }
 
 #Preview {
-    PosterCard(imageUrl: "https://image.tmdb.org/t/p/w500/sEaLO9s7CIN3fjz8R3Qksum44en.jpg", movieStatus: "Released", originalLanguage: "EN")
+    PosterCard(imageUrl: "https://image.tmdb.org/t/p/w500/sEaLO9s7CIN3fjz8R3Qksum44en.jpg", movieStatus: "Released", originalLanguage: "EN"){
+        
+    }
 }

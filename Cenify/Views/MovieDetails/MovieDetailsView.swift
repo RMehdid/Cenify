@@ -9,12 +9,18 @@ import SwiftUI
 
 struct MovieDetailsView: View {
     
-    let id: Int
+    private let id: Int
+    
+    @Binding private var selectedScheme: ColorScheme?
     
     @StateObject private var model = Model()
     
-    init(_ id: Int) {
+    @Environment(\.presentationMode) private var presentationMode
+    @Environment(\.colorScheme) private var colorScheme
+    
+    init(_ id: Int, selectedScheme: Binding<ColorScheme?>) {
         self.id = id
+        self._selectedScheme = selectedScheme
     }
     
     var body: some View {
@@ -26,10 +32,11 @@ struct MovieDetailsView: View {
                 EmptyView()
             case .success(let movieDetails):
                 VStack{
-                    PosterCard(imageUrl: movieDetails.imageLoader(size: "w500"), movieStatus: movieDetails.status, originalLanguage: movieDetails.original_language.uppercased())
+                    PosterCard(imageUrl: movieDetails.imageLoader(size: "w500"), movieStatus: movieDetails.status, originalLanguage: movieDetails.original_language.uppercased(), toggleScheme: toggleScheme)
                     VStack(alignment: .leading){
                         HStack{
                             Text(movieDetails.title)
+                                .font(.system(size: 32, weight: .bold))
                             Spacer()
                             HStack{
                                 Image("ic_star")
@@ -52,12 +59,36 @@ struct MovieDetailsView: View {
                 EmptyView()
             }
         }
+        .padding(.horizontal)
         .onAppear {
             model.getMovieDetail(id)
+        }
+        .navigationBarHidden(true)
+        .backgroundEffect()
+        .backOnSwipe(presentationMode: presentationMode)
+    }
+    
+    private func toggleScheme() {
+        withAnimation {
+            switch selectedScheme {
+            case .light:
+                self.selectedScheme = .dark
+            case .dark:
+                self.selectedScheme = .light
+            case nil:
+                switch colorScheme {
+                case .light:
+                    self.selectedScheme = .dark
+                case .dark:
+                    self.selectedScheme = .light
+                default: break
+                }
+            default: break
+            }
         }
     }
 }
 
 #Preview {
-    MovieDetailsView(466420)
+    MovieDetailsView(466420, selectedScheme: .constant(.dark))
 }

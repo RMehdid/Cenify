@@ -11,4 +11,8 @@ extension View {
     func backgroundEffect() -> some View {
         modifier(BackgroundEffect())
     }
+    
+    func backOnSwipe(presentationMode: Binding<PresentationMode>) -> some View {
+        self.modifier(BackHandler(presentationMode: presentationMode))
+    }
 }

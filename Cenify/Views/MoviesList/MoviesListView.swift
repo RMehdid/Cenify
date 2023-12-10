@@ -34,7 +34,7 @@ struct MoviesListView: View {
                         LazyVStack{
                             ForEach(movies) { movie in
                                 NavigationLink {
-                                    MovieDetailsView(movie.id)
+                                    MovieDetailsView(movie.id, selectedScheme: $selectedScheme)
                                 } label: {
                                     MovieCard(movie)
                                         .onAppear{
