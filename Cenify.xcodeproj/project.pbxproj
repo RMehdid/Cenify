@@ -8,18 +8,42 @@
 
 /* Begin PBXBuildFile section */
 		99A037802B25CAA600964315 /* CenifyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A0377F2B25CAA600964315 /* CenifyApp.swift */; };
-		99A037822B25CAA600964315 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A037812B25CAA600964315 /* ContentView.swift */; };
 		99A037842B25CAA800964315 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99A037832B25CAA800964315 /* Assets.xcassets */; };
 		99A037882B25CAA800964315 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99A037872B25CAA800964315 /* Preview Assets.xcassets */; };
+		99A037942B25CB8000964315 /* MoviesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A037932B25CB8000964315 /* MoviesListView.swift */; };
+		99A037962B25CB9400964315 /* MoviesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A037952B25CB9400964315 /* MoviesListViewModel.swift */; };
+		99A0379A2B25CBCC00964315 /* MovieDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A037992B25CBCB00964315 /* MovieDetailsView.swift */; };
+		99A0379C2B25CBDF00964315 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A0379B2B25CBDF00964315 /* NetworkManager.swift */; };
+		99A0379E2B25CC4C00964315 /* MovieRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A0379D2B25CC4C00964315 /* MovieRepo.swift */; };
+		99A037A12B25CCBE00964315 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A037A02B25CCBE00964315 /* Movie.swift */; };
+		99A037A42B25CD9B00964315 /* UiState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A037A32B25CD9B00964315 /* UiState.swift */; };
+		99A037AB2B25DCE600964315 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 99A037AA2B25DCE600964315 /* Alamofire */; };
+		99A037AE2B25F0F800964315 /* MovieCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A037AD2B25F0F800964315 /* MovieCard.swift */; };
+		99A037B12B260DD700964315 /* BackgroundEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A037B02B260DD700964315 /* BackgroundEffect.swift */; };
+		99A037B42B26228A00964315 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A037B32B26228900964315 /* View.swift */; };
+		99A037B62B26294700964315 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A037B52B26294700964315 /* Font.swift */; };
+		99A037B82B262A0300964315 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A037B72B262A0300964315 /* Text.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		99A0377C2B25CAA600964315 /* Cenify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cenify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99A0377F2B25CAA600964315 /* CenifyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenifyApp.swift; sourceTree = "<group>"; };
-		99A037812B25CAA600964315 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		99A037832B25CAA800964315 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		99A037852B25CAA800964315 /* Cenify.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Cenify.entitlements; sourceTree = "<group>"; };
 		99A037872B25CAA800964315 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		99A037932B25CB8000964315 /* MoviesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListView.swift; sourceTree = "<group>"; };
+		99A037952B25CB9400964315 /* MoviesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListViewModel.swift; sourceTree = "<group>"; };
+		99A037992B25CBCB00964315 /* MovieDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsView.swift; sourceTree = "<group>"; };
+		99A0379B2B25CBDF00964315 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		99A0379D2B25CC4C00964315 /* MovieRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRepo.swift; sourceTree = "<group>"; };
+		99A037A02B25CCBE00964315 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		99A037A32B25CD9B00964315 /* UiState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiState.swift; sourceTree = "<group>"; };
+		99A037A82B25D4B800964315 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		99A037AD2B25F0F800964315 /* MovieCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCard.swift; sourceTree = "<group>"; };
+		99A037B02B260DD700964315 /* BackgroundEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundEffect.swift; sourceTree = "<group>"; };
+		99A037B32B26228900964315 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		99A037B52B26294700964315 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		99A037B72B262A0300964315 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99A037AB2B25DCE600964315 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,8 +77,16 @@
 		99A0377E2B25CAA600964315 /* Cenify */ = {
 			isa = PBXGroup;
 			children = (
-				99A0377F2B25CAA600964315 /* CenifyApp.swift */,
-				99A037812B25CAA600964315 /* ContentView.swift */,
+				99A037A82B25D4B800964315 /* Info.plist */,
+				99A037AF2B260DB500964315 /* ViewModifers */,
+				99A037AC2B25F0DF00964315 /* Components */,
+				99A037A52B25D26000964315 /* Extensions */,
+				99A037A22B25CD8B00964315 /* UiState */,
+				99A0379F2B25CC9000964315 /* Models */,
+				99A037902B25CB3D00964315 /* Views */,
+				99A0378F2B25CADE00964315 /* Repos */,
+				99A0378E2B25CACB00964315 /* Managers */,
+				99A037B92B26307C00964315 /* Main */,
 				99A037832B25CAA800964315 /* Assets.xcassets */,
 				99A037852B25CAA800964315 /* Cenify.entitlements */,
 				99A037862B25CAA800964315 /* Preview Content */,
@@ -67,6 +100,106 @@
 				99A037872B25CAA800964315 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		99A0378E2B25CACB00964315 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				99A0379B2B25CBDF00964315 /* NetworkManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		99A0378F2B25CADE00964315 /* Repos */ = {
+			isa = PBXGroup;
+			children = (
+				99A0379D2B25CC4C00964315 /* MovieRepo.swift */,
+			);
+			path = Repos;
+			sourceTree = "<group>";
+		};
+		99A037902B25CB3D00964315 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				99A037982B25CBA600964315 /* MovieDetails */,
+				99A037972B25CB9C00964315 /* MoviesList */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		99A037972B25CB9C00964315 /* MoviesList */ = {
+			isa = PBXGroup;
+			children = (
+				99A037932B25CB8000964315 /* MoviesListView.swift */,
+				99A037952B25CB9400964315 /* MoviesListViewModel.swift */,
+			);
+			path = MoviesList;
+			sourceTree = "<group>";
+		};
+		99A037982B25CBA600964315 /* MovieDetails */ = {
+			isa = PBXGroup;
+			children = (
+				99A037992B25CBCB00964315 /* MovieDetailsView.swift */,
+			);
+			path = MovieDetails;
+			sourceTree = "<group>";
+		};
+		99A0379F2B25CC9000964315 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				99A037A02B25CCBE00964315 /* Movie.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		99A037A22B25CD8B00964315 /* UiState */ = {
+			isa = PBXGroup;
+			children = (
+				99A037A32B25CD9B00964315 /* UiState.swift */,
+			);
+			path = UiState;
+			sourceTree = "<group>";
+		};
+		99A037A52B25D26000964315 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				99A037B22B26227A00964315 /* SwiftUI */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		99A037AC2B25F0DF00964315 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				99A037AD2B25F0F800964315 /* MovieCard.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		99A037AF2B260DB500964315 /* ViewModifers */ = {
+			isa = PBXGroup;
+			children = (
+				99A037B02B260DD700964315 /* BackgroundEffect.swift */,
+			);
+			path = ViewModifers;
+			sourceTree = "<group>";
+		};
+		99A037B22B26227A00964315 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				99A037B32B26228900964315 /* View.swift */,
+				99A037B52B26294700964315 /* Font.swift */,
+				99A037B72B262A0300964315 /* Text.swift */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		99A037B92B26307C00964315 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				99A0377F2B25CAA600964315 /* CenifyApp.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -85,6 +218,9 @@
 			dependencies = (
 			);
 			name = Cenify;
+			packageProductDependencies = (
+				99A037AA2B25DCE600964315 /* Alamofire */,
+			);
 			productName = Cenify;
 			productReference = 99A0377C2B25CAA600964315 /* Cenify.app */;
 			productType = "com.apple.product-type.application";
@@ -113,6 +249,9 @@
 				Base,
 			);
 			mainGroup = 99A037732B25CAA600964315;
+			packageReferences = (
+				99A037A92B25DCE600964315 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 99A0377D2B25CAA600964315 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -139,8 +278,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99A037822B25CAA600964315 /* ContentView.swift in Sources */,
+				99A037B12B260DD700964315 /* BackgroundEffect.swift in Sources */,
+				99A037AE2B25F0F800964315 /* MovieCard.swift in Sources */,
+				99A037942B25CB8000964315 /* MoviesListView.swift in Sources */,
 				99A037802B25CAA600964315 /* CenifyApp.swift in Sources */,
+				99A0379E2B25CC4C00964315 /* MovieRepo.swift in Sources */,
+				99A037962B25CB9400964315 /* MoviesListViewModel.swift in Sources */,
+				99A037B62B26294700964315 /* Font.swift in Sources */,
+				99A037A42B25CD9B00964315 /* UiState.swift in Sources */,
+				99A037B42B26228A00964315 /* View.swift in Sources */,
+				99A037B82B262A0300964315 /* Text.swift in Sources */,
+				99A0379C2B25CBDF00964315 /* NetworkManager.swift in Sources */,
+				99A037A12B25CCBE00964315 /* Movie.swift in Sources */,
+				99A0379A2B25CBCC00964315 /* MovieDetailsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +424,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Cenify/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -312,6 +463,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Cenify/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -359,6 +511,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		99A037A92B25DCE600964315 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.8.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		99A037AA2B25DCE600964315 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 99A037A92B25DCE600964315 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 99A037742B25CAA600964315 /* Project object */;
 }

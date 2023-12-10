@@ -11,7 +11,7 @@ import SwiftUI
 struct CenifyApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MoviesListView()
         }
     }
 }
