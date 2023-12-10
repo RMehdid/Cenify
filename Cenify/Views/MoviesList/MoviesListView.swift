@@ -16,40 +16,47 @@ struct MoviesListView: View {
     @State private var selectedScheme: ColorScheme?
     
     var body: some View {
-        VStack(spacing: 0){
-            VStack{
-                navbar()
-                Rectangle()
-                    .frame(height: 2)
-                    .opacity(0.4)
-            }
-            switch model.moviesListUiState {
-            case .empty:
-                EmptyView()
-            case .loading:
-                Spacer()
-            case .success(let movies):
-                ScrollView(showsIndicators: false){
-                    LazyVStack{
-                        ForEach(movies) { movie in
-                            MovieCard(movie)
-                                .onAppear{
-                                    if movie.id == movies.last?.id {
-                                        model.loadMoreMovies()
-                                    }
-                                }
-                        }
-                    }
-                    .padding(.vertical)
+        NavigationStack {
+            VStack(spacing: 0){
+                VStack{
+                    navbar()
+                    Rectangle()
+                        .frame(height: 2)
+                        .opacity(0.4)
                 }
-            case .failure(let error):
-                Spacer()
-                Text(error)
-                Spacer()
+                switch model.moviesListUiState {
+                case .empty:
+                    EmptyView()
+                case .loading:
+                    Spacer()
+                case .success(let movies):
+                    ScrollView(showsIndicators: false){
+                        LazyVStack{
+                            ForEach(movies) { movie in
+                                NavigationLink {
+                                    MovieDetailsView(movie.id)
+                                } label: {
+                                    MovieCard(movie)
+                                        .onAppear{
+                                            if movie.id == movies.last?.id {
+                                                model.loadMoreMovies()
+                                            }
+                                        }
+                                }
+                                .buttonStyle(PlainButtonStyle())
+                            }
+                        }
+                        .padding(.vertical)
+                    }
+                case .failure(let error):
+                    Spacer()
+                    Text(error)
+                    Spacer()
+                }
             }
+            .padding()
+            .backgroundEffect()
         }
-        .padding()
-        .backgroundEffect()
         .preferredColorScheme(selectedScheme)
     }
     

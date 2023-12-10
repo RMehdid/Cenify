@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "sun.svg",
+      "filename" : "moon.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -12,7 +12,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "moon.svg",
+      "filename" : "sun.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },

@@ -33,6 +33,7 @@ struct MovieCard: View {
                     VStack(alignment: .leading, spacing: 6){
                         Text(movie.title)
                             .font(.system(size: 20, weight: .bold))
+                            .multilineTextAlignment(.leading)
                         Text(movie.release_date)
                             .font(.system(size: 12, weight: .medium))
                     }
