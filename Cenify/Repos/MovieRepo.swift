@@ -10,7 +10,7 @@ import Foundation
 class MovieRepo {
     private enum Urls: String {
         case moviesList = "/discover/movie"
-        case movieDetails = "movie/{{id}}"
+        case movieDetails = "/movie/{{id}}"
     }
     
     static func getMovies(page: Int) async throws -> Response<[Movie]> {
