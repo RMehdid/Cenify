@@ -8,6 +8,7 @@
 import Foundation
 
 enum UiState<Model> {
+    case idle
     case empty
     case loading
     case success(Model)

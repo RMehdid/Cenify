@@ -10,11 +10,11 @@ import Kingfisher
 
 struct PosterCard: View {
     
-    private let imageUrl: String
-    private let movieStatus: String
-    private let originalLanguage: String
+    private var imageUrl: String?
+    private var movieStatus: String?
+    private var originalLanguage: String?
     
-    private var toggleScheme: () -> Void
+    private var toggleScheme: (() -> Void)?
     
     init(imageUrl: String, movieStatus: String, originalLanguage: String, toggleScheme: @escaping () -> Void) {
         self.imageUrl = imageUrl
@@ -23,9 +23,11 @@ struct PosterCard: View {
         self.toggleScheme = toggleScheme
     }
     
+    init() {}
+    
     var body: some View {
         ZStack{
-            if let url = URL(string: imageUrl) {
+            if let imageUrl = imageUrl, let url = URL(string: imageUrl) {
                 KFImage(url)
                     .resizable()
                     .placeholder { progress in
@@ -40,24 +42,45 @@ struct PosterCard: View {
                                     startPoint: .top,
                                     endPoint: .bottom)
                     }
+            } else {
+                Rectangle()
+                    .redacted(reason: .placeholder)
+                    .shimmering()
             }
             VStack{
-                HStack{
-                    Spacer()
-                    Button(action: toggleScheme) {
-                        Image("ic_mode")
-                            .resizable()
-                            .renderingMode(.template)
-                            .frame(width: 32, height: 32)
-                            .foregroundStyle(Color.white)
+                if let toggleScheme = toggleScheme {
+                    HStack{
+                        Spacer()
+                        Button(action: toggleScheme) {
+                            Image("ic_mode")
+                                .resizable()
+                                .renderingMode(.template)
+                                .frame(width: 32, height: 32)
+                                .foregroundStyle(Color.white)
+                        }
+                        .buttonStyle(PlainButtonStyle())
                     }
-                    .buttonStyle(PlainButtonStyle())
                 }
+                
                 Spacer()
                 HStack{
-                    label(originalLanguage)
+                    if let originalLanguage = originalLanguage {
+                        label(originalLanguage)
+                    } else {
+                        RoundedRectangle(cornerRadius: .infinity)
+                            .frame(width: 72, height: 38)
+                            .redacted(reason: .placeholder)
+                            .shimmering()
+                    }
                     Spacer()
-                    label(movieStatus)
+                    if let movieStatus = movieStatus {
+                        label(movieStatus)
+                    } else {
+                        RoundedRectangle(cornerRadius: .infinity)
+                            .frame(width: 72, height: 38)
+                            .redacted(reason: .placeholder)
+                            .shimmering()
+                    }
                 }
             }
             .padding()
@@ -98,7 +121,5 @@ struct PosterCard: View {
 }
 
 #Preview {
-    PosterCard(imageUrl: "https://image.tmdb.org/t/p/w500/sEaLO9s7CIN3fjz8R3Qksum44en.jpg", movieStatus: "Released", originalLanguage: "EN"){
-        
-    }
+    PosterCard()
 }

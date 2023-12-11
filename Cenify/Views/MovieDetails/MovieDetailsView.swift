@@ -26,10 +26,41 @@ struct MovieDetailsView: View {
     var body: some View {
         ZStack{
             switch model.movieDetailsUiState {
-            case .empty:
+            case .empty, .idle:
                 EmptyView()
             case .loading:
-                EmptyView()
+                VStack{
+                    PosterCard()
+                        .redacted(reason: .placeholder)
+                        .shimmering()
+                    VStack(alignment: .leading){
+                        HStack{
+                            Text(MovieDetails.dumbForShimmer.title)
+                                .redacted(reason: .placeholder)
+                                .shimmering()
+                            
+                            Spacer()
+                            HStack{
+                                Image("ic_star")
+                                    .resizable()
+                                    .frame(width: 24, height: 24)
+                                    .redacted(reason: .placeholder)
+                                    .shimmering()
+                                
+                                Text(MovieDetails.dumbForShimmer.vote_average.toString)
+                                    .redacted(reason: .placeholder)
+                                    .shimmering()
+                            }
+                        }
+                        Text(MovieDetails.dumbForShimmer.release_date)
+                            .redacted(reason: .placeholder)
+                            .shimmering()
+                    }
+                    
+                    Text(MovieDetails.dumbForShimmer.overview)
+                        .redacted(reason: .placeholder)
+                        .shimmering()
+                }
             case .success(let movieDetails):
                 VStack{
                     PosterCard(imageUrl: movieDetails.imageLoader(size: "w500"), movieStatus: movieDetails.status, originalLanguage: movieDetails.original_language.uppercased(), toggleScheme: toggleScheme)
@@ -56,7 +87,7 @@ struct MovieDetailsView: View {
                         .font(.system(size: 14, weight: .regular))
                 }
             case .failure(let error):
-                EmptyView()
+                error.errorView()
             }
         }
         .padding(.horizontal)

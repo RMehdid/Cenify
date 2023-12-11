@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Shimmer
 
 struct MoviesListView: View {
     
@@ -25,12 +26,21 @@ struct MoviesListView: View {
                         .opacity(0.4)
                 }
                 switch model.moviesListUiState {
+                case .idle:
+                    EmptyView()
                 case .empty:
                     Spacer()
                     EmptyListView()
                     Spacer()
                 case .loading:
-                    Spacer()
+                    VStack{
+                        ForEach(0..<6){ index in
+                            RoundedRectangle(cornerRadius: 8)
+                                .fill(Color.secondary)
+                                .frame(height: 120)
+                                .shimmering()
+                        }
+                    }
                 case .success(let movies):
                     ScrollView(showsIndicators: false){
                         LazyVStack{

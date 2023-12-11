@@ -10,7 +10,7 @@ import Foundation
 extension MoviesListView {
     class Model: ObservableObject {
         
-        @Published private(set) var moviesListUiState: UiState<[Movie]> = .empty
+        @Published private(set) var moviesListUiState: UiState<[Movie]> = .idle
         @Published private(set) var isLoadingMore = false
         
         private var moviesList = [Movie]()

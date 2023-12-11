@@ -10,15 +10,17 @@ import Kingfisher
 
 struct MovieCard: View {
     
-    let movie: Movie
+    private var movie: Movie?
     
     init(_ movie: Movie) {
         self.movie = movie
     }
     
+    init() {}
+    
     var body: some View {
         HStack(spacing: 10){
-            if let url = URL(string: movie.imageLoader(size: "w500")) {
+            if let url = URL(string: movie?.imageLoader(size: "w500") ?? "") {
                 KFImage(url)
                     .resizable()
                     .placeholder { progress in
@@ -26,25 +28,51 @@ struct MovieCard: View {
                     }
                     .frame(width: 70, height: 100)
                     .cornerRadius(8)
+            } else {
+                RoundedRectangle(cornerRadius: 8)
+                    .frame(width: 70, height: 100)
+                    .redacted(reason: .placeholder)
+                    .shimmering()
             }
             
             VStack(alignment: .leading, spacing: 16){
                 VStack(alignment: .leading, spacing: 6){
-                    Text(movie.title)
-                        .font(.system(size: 20, weight: .bold))
-                        .multilineTextAlignment(.leading)
-                    Text(movie.release_date)
-                        .font(.system(size: 12, weight: .medium))
+                    if let title = movie?.title {
+                        Text(title)
+                            .font(.system(size: 20, weight: .bold))
+                            .multilineTextAlignment(.leading)
+                    } else {
+                        Text(Movie.dumbForShimmer.title)
+                            .redacted(reason: .placeholder)
+                            .shimmering()
+                    }
+                    
+                    if let release_date = movie?.release_date {
+                        Text(release_date)
+                            .font(.system(size: 12, weight: .medium))
+                    } else {
+                        Text(Movie.dumbForShimmer.release_date)
+                            .redacted(reason: .placeholder)
+                            .shimmering()
+                    }
                 }
                 
                 HStack(spacing: 6){
-                    Image("ic_star")
-                        .resizable()
-                        .renderingMode(.template)
-                        .frame(width: 20, height: 20)
+                    if let movie = movie {
+                        Image("ic_star")
+                            .resizable()
+                            .renderingMode(.template)
+                            .frame(width: 20, height: 20)
+                    }
                     
-                    Text(movie.vote_average.toString)
-                        .font(.system(size: 14, weight: .semibold))
+                    if let vote_average = movie?.vote_average {
+                        Text(vote_average.toString)
+                            .font(.system(size: 14, weight: .semibold))
+                    } else {
+                        Text(Movie.dumbForShimmer.vote_average.toString)
+                            .redacted(reason: .placeholder)
+                            .shimmering()
+                    }
                 }
             }
             .padding(8)
@@ -56,5 +84,5 @@ struct MovieCard: View {
 }
 
 #Preview {
-    MovieCard(Movie(id: 823282, title: "Movie name", release_date: "2022", poster_path: "/sEaLO9s7CIN3fjz8R3Qksum44en.jpg", vote_average: 7.7))
+    MovieCard()
 }

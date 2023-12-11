@@ -25,4 +25,6 @@ struct Movie: Decodable, Identifiable {
         
         return imageBaseUrl + size + poster_path
     }
+    
+    static let dumbForShimmer = Movie(id: 0, title: "dumb title", release_date: "2020", poster_path: "/hdgfhjs.png", vote_average: 7.7)
 }

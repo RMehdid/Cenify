@@ -25,4 +25,6 @@ struct MovieDetails: Decodable, Identifiable {
         
         return imageBaseUrl + size + poster_path
     }
+    
+    static let dumbForShimmer = MovieDetails(id: 0, title: "dumb movie name", release_date: "2010-10-10", overview: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis, quaerat molestiae eveniet odit animi veritatis eligendi necessitatibus inventore est fuga ex consequatur modi iusto, ipsum, velit tempora ducimus dicta. Velit.", poster_path: "/jhfgjhsdfbsdjhf.png", vote_average: 7.77, status: "RELEASED", original_language: "EN")
 }
