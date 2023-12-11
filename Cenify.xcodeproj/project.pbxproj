@@ -31,6 +31,7 @@
 		99A037CD2B26F57200964315 /* FailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A037CC2B26F57200964315 /* FailView.swift */; };
 		99A037CF2B27012800964315 /* CNError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A037CE2B27012800964315 /* CNError.swift */; };
 		99A037D12B2702FB00964315 /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A037D02B2702FB00964315 /* EmptyListView.swift */; };
+		99BF79612B270A5400FB628D /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BF79602B270A5400FB628D /* LoadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		99A037CC2B26F57200964315 /* FailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailView.swift; sourceTree = "<group>"; };
 		99A037CE2B27012800964315 /* CNError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CNError.swift; sourceTree = "<group>"; };
 		99A037D02B2702FB00964315 /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
+		99BF79602B270A5400FB628D /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +197,7 @@
 				99A037C12B26478500964315 /* PosterCard.swift */,
 				99A037CC2B26F57200964315 /* FailView.swift */,
 				99A037D02B2702FB00964315 /* EmptyListView.swift */,
+				99BF79602B270A5400FB628D /* LoadingView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				99A037C02B2645F000964315 /* MovieDetails.swift in Sources */,
 				99A037AE2B25F0F800964315 /* MovieCard.swift in Sources */,
 				99A037CF2B27012800964315 /* CNError.swift in Sources */,
+				99BF79612B270A5400FB628D /* LoadingView.swift in Sources */,
 				99A037942B25CB8000964315 /* MoviesListView.swift in Sources */,
 				99A037CB2B26EF3400964315 /* GlacialEffect.swift in Sources */,
 				99A037802B25CAA600964315 /* CenifyApp.swift in Sources */,
