@@ -27,6 +27,7 @@
 		99A037C42B26545F00964315 /* MovieDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A037C32B26545F00964315 /* MovieDetailsViewModel.swift */; };
 		99A037C62B265B4000964315 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A037C52B265B4000964315 /* Double.swift */; };
 		99A037C92B26701200964315 /* BackHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A037C82B26701200964315 /* BackHandler.swift */; };
+		99A037CB2B26EF3400964315 /* GlacialEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A037CA2B26EF3400964315 /* GlacialEffect.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		99A037C32B26545F00964315 /* MovieDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewModel.swift; sourceTree = "<group>"; };
 		99A037C52B265B4000964315 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		99A037C82B26701200964315 /* BackHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackHandler.swift; sourceTree = "<group>"; };
+		99A037CA2B26EF3400964315 /* GlacialEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlacialEffect.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +195,7 @@
 			children = (
 				99A037B02B260DD700964315 /* BackgroundEffect.swift */,
 				99A037C82B26701200964315 /* BackHandler.swift */,
+				99A037CA2B26EF3400964315 /* GlacialEffect.swift */,
 			);
 			path = ViewModifers;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				99A037C02B2645F000964315 /* MovieDetails.swift in Sources */,
 				99A037AE2B25F0F800964315 /* MovieCard.swift in Sources */,
 				99A037942B25CB8000964315 /* MoviesListView.swift in Sources */,
+				99A037CB2B26EF3400964315 /* GlacialEffect.swift in Sources */,
 				99A037802B25CAA600964315 /* CenifyApp.swift in Sources */,
 				99A0379E2B25CC4C00964315 /* MovieRepo.swift in Sources */,
 				99A037C22B26478500964315 /* PosterCard.swift in Sources */,

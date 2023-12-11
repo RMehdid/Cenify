@@ -15,4 +15,8 @@ extension View {
     func backOnSwipe(presentationMode: Binding<PresentationMode>) -> some View {
         self.modifier(BackHandler(presentationMode: presentationMode))
     }
+    
+    func glacialEffect(_ cornerRadius: CGFloat) -> some View {
+        self.modifier(GlacialEffect(cornerRadius: cornerRadius))
+    }
 }
