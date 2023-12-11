@@ -11,5 +11,5 @@ enum UiState<Model> {
     case empty
     case loading
     case success(Model)
-    case failure(String)
+    case failure(CNError)
 }

@@ -8,14 +8,6 @@
 import Foundation
 import Alamofire
 
-enum CNError: Error {
-    case badReponse
-    case badUrl
-    case timout
-    case forbidden
-    case unknown
-}
-
 actor NetworkManager: GlobalActor {
     
     public private(set) static var shared = NetworkManager()

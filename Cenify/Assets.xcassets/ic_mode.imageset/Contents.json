@@ -12,6 +12,7 @@
           "value" : "dark"
         }
       ],
+      "filename" : "sun.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -26,7 +27,6 @@
           "value" : "dark"
         }
       ],
-      "filename" : "sun.svg",
       "idiom" : "universal",
       "scale" : "2x"
     },

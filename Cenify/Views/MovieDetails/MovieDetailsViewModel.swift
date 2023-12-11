@@ -24,7 +24,7 @@ extension MovieDetailsView {
                     }
                 } catch {
                     DispatchQueue.main.async {
-                        self.movieDetailsUiState = .failure(error.localizedDescription)
+                        self.movieDetailsUiState = .failure(error as? CNError ?? .unknown)
                     }
                 }
             }

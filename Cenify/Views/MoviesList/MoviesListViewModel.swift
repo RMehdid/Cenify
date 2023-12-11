@@ -36,7 +36,7 @@ extension MoviesListView {
                         self.isLoadingMore = false
                     } else {
                         DispatchQueue.main.async {
-                            self.moviesListUiState = .failure(error.localizedDescription)
+                            self.moviesListUiState = .failure(error as? CNError ?? .unknown)
                         }
                     }
                 }

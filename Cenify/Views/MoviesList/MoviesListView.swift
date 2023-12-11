@@ -49,9 +49,7 @@ struct MoviesListView: View {
                         .padding(.vertical)
                     }
                 case .failure(let error):
-                    Spacer()
-                    Text(error)
-                    Spacer()
+                    error.errorView()
                 }
             }
             .padding()
