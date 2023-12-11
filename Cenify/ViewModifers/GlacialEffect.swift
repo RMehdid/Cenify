@@ -15,7 +15,7 @@ struct GlacialEffect: ViewModifier {
             .background {
                 LinearGradient(
                     gradient: Gradient(stops: [
-                        .init(color: Color("CNGlacial").opacity(0.4), location: 0),
+                        .init(color: Color("CNGlacial").opacity(0.2), location: 0),
                         .init(color: Color("CNGlacial").opacity(0.1), location: 1)]),
                     startPoint: .topTrailing,
                     endPoint: .bottomLeading)
@@ -24,7 +24,7 @@ struct GlacialEffect: ViewModifier {
                 RoundedRectangle(cornerRadius: cornerRadius)
                     .strokeBorder(LinearGradient(
                         gradient: Gradient(stops: [
-                            .init(color: Color("CNGlacial").opacity(0.4), location: 0),
+                            .init(color: Color("CNGlacial").opacity(0.2), location: 0),
                             .init(color: Color("CNGlacial").opacity(0.1), location: 1)]),
                         startPoint: .topLeading,
                         endPoint: .bottomTrailing), lineWidth: 1)

@@ -24,27 +24,3 @@ struct FailView: View {
         }
     }
 }
-
-struct NetworkError: View {
-    var body: some View {
-        FailView(iconName: "ic_no_internet", message: "No internet connection")
-    }
-}
-
-struct DecodingError: View {
-    var body: some View {
-        FailView(iconName: "ic_warning", message: "Decoding error")
-    }
-}
-
-struct ForbiddenError: View {
-    var body: some View {
-        FailView(iconName: "ic_profile_error", message: "Uou don’t have the right to be here")
-    }
-}
-
-struct BadUrl: View {
-    var body: some View {
-        FailView(iconName: "ic_code_error", message: "Bad url")
-    }
-}

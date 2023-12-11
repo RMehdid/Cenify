@@ -26,7 +26,9 @@ struct MoviesListView: View {
                 }
                 switch model.moviesListUiState {
                 case .empty:
-                    EmptyView()
+                    Spacer()
+                    EmptyListView()
+                    Spacer()
                 case .loading:
                     Spacer()
                 case .success(let movies):
@@ -49,7 +51,9 @@ struct MoviesListView: View {
                         .padding(.vertical)
                     }
                 case .failure(let error):
+                    Spacer()
                     error.errorView()
+                    Spacer()
                 }
             }
             .padding()

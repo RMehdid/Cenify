@@ -32,6 +32,7 @@
 		99A037CF2B27012800964315 /* CNError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A037CE2B27012800964315 /* CNError.swift */; };
 		99A037D12B2702FB00964315 /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A037D02B2702FB00964315 /* EmptyListView.swift */; };
 		99BF79612B270A5400FB628D /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BF79602B270A5400FB628D /* LoadingView.swift */; };
+		99BF79642B271DDF00FB628D /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 99BF79632B271DDF00FB628D /* loading.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		99A037CE2B27012800964315 /* CNError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CNError.swift; sourceTree = "<group>"; };
 		99A037D02B2702FB00964315 /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
 		99BF79602B270A5400FB628D /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		99BF79632B271DDF00FB628D /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				99A037A82B25D4B800964315 /* Info.plist */,
+				99BF79622B271DA300FB628D /* Resources */,
 				99A037AF2B260DB500964315 /* ViewModifers */,
 				99A037AC2B25F0DF00964315 /* Components */,
 				99A037A52B25D26000964315 /* Extensions */,
@@ -236,6 +239,14 @@
 			path = Foundation;
 			sourceTree = "<group>";
 		};
+		99BF79622B271DA300FB628D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				99BF79632B271DDF00FB628D /* loading.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -304,6 +315,7 @@
 			files = (
 				99A037882B25CAA800964315 /* Preview Assets.xcassets in Resources */,
 				99A037842B25CAA800964315 /* Assets.xcassets in Resources */,
+				99BF79642B271DDF00FB628D /* loading.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
