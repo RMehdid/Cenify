@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9959C3932B273F900051A069 /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 9959C3922B273F900051A069 /* Shimmer */; };
+		9959C3952B2770720051A069 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9959C3942B2770720051A069 /* Genre.swift */; };
 		99A037802B25CAA600964315 /* CenifyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A0377F2B25CAA600964315 /* CenifyApp.swift */; };
 		99A037842B25CAA800964315 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99A037832B25CAA800964315 /* Assets.xcassets */; };
 		99A037882B25CAA800964315 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99A037872B25CAA800964315 /* Preview Assets.xcassets */; };
@@ -24,7 +25,6 @@
 		99A037B42B26228A00964315 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A037B32B26228900964315 /* View.swift */; };
 		99A037BC2B2641F400964315 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 99A037BB2B2641F400964315 /* Kingfisher */; };
 		99A037C02B2645F000964315 /* MovieDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A037BF2B2645F000964315 /* MovieDetails.swift */; };
-		99A037C22B26478500964315 /* PosterCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A037C12B26478500964315 /* PosterCard.swift */; };
 		99A037C42B26545F00964315 /* MovieDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A037C32B26545F00964315 /* MovieDetailsViewModel.swift */; };
 		99A037C62B265B4000964315 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A037C52B265B4000964315 /* Double.swift */; };
 		99A037C92B26701200964315 /* BackHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A037C82B26701200964315 /* BackHandler.swift */; };
@@ -37,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9959C3942B2770720051A069 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		99A0377C2B25CAA600964315 /* Cenify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cenify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99A0377F2B25CAA600964315 /* CenifyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenifyApp.swift; sourceTree = "<group>"; };
 		99A037832B25CAA800964315 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -54,7 +55,6 @@
 		99A037B02B260DD700964315 /* BackgroundEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundEffect.swift; sourceTree = "<group>"; };
 		99A037B32B26228900964315 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		99A037BF2B2645F000964315 /* MovieDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetails.swift; sourceTree = "<group>"; };
-		99A037C12B26478500964315 /* PosterCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterCard.swift; sourceTree = "<group>"; };
 		99A037C32B26545F00964315 /* MovieDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewModel.swift; sourceTree = "<group>"; };
 		99A037C52B265B4000964315 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		99A037C82B26701200964315 /* BackHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackHandler.swift; sourceTree = "<group>"; };
@@ -174,6 +174,7 @@
 				99A037A02B25CCBE00964315 /* Movie.swift */,
 				99A037BF2B2645F000964315 /* MovieDetails.swift */,
 				99A037CE2B27012800964315 /* CNError.swift */,
+				9959C3942B2770720051A069 /* Genre.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -199,7 +200,6 @@
 			isa = PBXGroup;
 			children = (
 				99A037AD2B25F0F800964315 /* MovieCard.swift */,
-				99A037C12B26478500964315 /* PosterCard.swift */,
 				99A037CC2B26F57200964315 /* FailView.swift */,
 				99A037D02B2702FB00964315 /* EmptyListView.swift */,
 				99BF79602B270A5400FB628D /* LoadingView.swift */,
@@ -333,6 +333,7 @@
 				99A037C62B265B4000964315 /* Double.swift in Sources */,
 				99A037B12B260DD700964315 /* BackgroundEffect.swift in Sources */,
 				99A037C02B2645F000964315 /* MovieDetails.swift in Sources */,
+				9959C3952B2770720051A069 /* Genre.swift in Sources */,
 				99A037AE2B25F0F800964315 /* MovieCard.swift in Sources */,
 				99A037CF2B27012800964315 /* CNError.swift in Sources */,
 				99BF79612B270A5400FB628D /* LoadingView.swift in Sources */,
@@ -341,7 +342,6 @@
 				99A037802B25CAA600964315 /* CenifyApp.swift in Sources */,
 				99A0379E2B25CC4C00964315 /* MovieRepo.swift in Sources */,
 				99A037CD2B26F57200964315 /* FailView.swift in Sources */,
-				99A037C22B26478500964315 /* PosterCard.swift in Sources */,
 				99A037962B25CB9400964315 /* MoviesListViewModel.swift in Sources */,
 				99A037C42B26545F00964315 /* MovieDetailsViewModel.swift in Sources */,
 				99A037A42B25CD9B00964315 /* UiState.swift in Sources */,

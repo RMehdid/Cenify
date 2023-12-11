@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct MovieDetailsView: View {
     
@@ -29,11 +30,17 @@ struct MovieDetailsView: View {
             case .empty, .idle:
                 EmptyView()
             case .loading:
-                VStack{
-                    PosterCard()
-                        .redacted(reason: .placeholder)
-                        .shimmering()
-                    VStack(alignment: .leading){
+                VStack(spacing: 16){
+                    posterCard(movieDetails: nil)
+                    
+                    VStack(alignment: .leading, spacing: 16){
+                        HStack{
+                            ForEach(MovieDetails.dumbForShimmer.genres){ genre in
+                                label(genre.name)
+                                    .redacted(reason: .placeholder)
+                                    .shimmering()
+                            }
+                        }
                         HStack{
                             Text(MovieDetails.dumbForShimmer.title)
                                 .redacted(reason: .placeholder)
@@ -63,8 +70,15 @@ struct MovieDetailsView: View {
                 }
             case .success(let movieDetails):
                 VStack{
-                    PosterCard(imageUrl: movieDetails.imageLoader(size: "w500"), movieStatus: movieDetails.status, originalLanguage: movieDetails.original_language.uppercased(), toggleScheme: toggleScheme)
+                    posterCard(movieDetails: movieDetails)
                     VStack(alignment: .leading){
+                        ScrollView(.horizontal) {
+                            HStack{
+                                ForEach(movieDetails.genres){ genre in
+                                    label(genre.name)
+                                }
+                            }
+                        }
                         HStack{
                             Text(movieDetails.title)
                                 .font(.system(size: 32, weight: .bold))
@@ -116,6 +130,99 @@ struct MovieDetailsView: View {
                 }
             default: break
             }
+        }
+    }
+    
+    @ViewBuilder
+    func posterCard(movieDetails: MovieDetails?) -> some View {
+        ZStack{
+            if let imageUrl = movieDetails?.imageLoader(size: "w500"), let url = URL(string: imageUrl) {
+                KFImage(url)
+                    .resizable()
+                    .placeholder { progress in
+                        Color.gray
+                    }
+                    .overlay{
+                        LinearGradient(
+                                    gradient: Gradient(stops: [
+                                .init(color: Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)), location: 0),
+                                .init(color: Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)), location: 0.5),
+                                .init(color: Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.7)), location: 1)]),
+                                    startPoint: .top,
+                                    endPoint: .bottom)
+                    }
+            } else {
+                Rectangle()
+                    .redacted(reason: .placeholder)
+                    .shimmering()
+            }
+            VStack{
+                    HStack{
+                        Spacer()
+                        Button(action: toggleScheme) {
+                            Image("ic_mode")
+                                .resizable()
+                                .renderingMode(.template)
+                                .frame(width: 32, height: 32)
+                                .foregroundStyle(Color.white)
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                    }
+                
+                Spacer()
+                HStack{
+                    if let originalLanguage = movieDetails?.original_language {
+                        label(originalLanguage)
+                    } else {
+                        RoundedRectangle(cornerRadius: .infinity)
+                            .frame(width: 72, height: 38)
+                            .redacted(reason: .placeholder)
+                            .shimmering()
+                    }
+                    Spacer()
+                    if let movieStatus = movieDetails?.status {
+                        label(movieStatus)
+                    } else {
+                        RoundedRectangle(cornerRadius: .infinity)
+                            .frame(width: 72, height: 38)
+                            .redacted(reason: .placeholder)
+                            .shimmering()
+                    }
+                }
+            }
+            .padding()
+        }
+        .frame(height: UIScreen.main.bounds.height * 0.6)
+        .cornerRadius(26)
+    }
+    
+    @ViewBuilder
+    private func label(_ string: String) -> some View {
+        ZStack{
+            Text(string)
+                .font(.system(size: 12, weight: .medium))
+                .foregroundStyle(Color.white)
+                .padding(.vertical)
+                .frame(minWidth: 68)
+                .background {
+                    RoundedRectangle(cornerRadius: .infinity)
+                        .fill(LinearGradient(
+                            gradient: Gradient(stops: [
+                                .init(color: Color("CNGlacial").opacity(0.4), location: 0),
+                                .init(color: Color("CNGlacial").opacity(0.1), location: 1)]),
+                            startPoint: .topTrailing,
+                            endPoint: .bottomLeading))
+                    
+                    RoundedRectangle(cornerRadius: .infinity)
+                        .strokeBorder(LinearGradient(
+                            gradient: Gradient(stops: [
+                                .init(color: Color("CNGlacial").opacity(0.4), location: 0),
+                                .init(color: Color("CNGlacial").opacity(0.1), location: 1)]),
+                            startPoint: .topTrailing,
+                            endPoint: .bottomLeading),
+                                      lineWidth: 1
+                        )
+                }
         }
     }
 }
