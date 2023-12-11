@@ -69,37 +69,40 @@ struct MovieDetailsView: View {
                         .shimmering()
                 }
             case .success(let movieDetails):
-                VStack{
-                    posterCard(movieDetails: movieDetails)
-                    VStack(alignment: .leading){
-                        ScrollView(.horizontal) {
-                            HStack{
-                                ForEach(movieDetails.genres){ genre in
-                                    label(genre.name)
+                ScrollView(showsIndicators: false) {
+                    VStack {
+                        posterCard(movieDetails: movieDetails)
+                        VStack(alignment: .leading){
+                            ScrollView(.horizontal) {
+                                HStack{
+                                    ForEach(movieDetails.genres){ genre in
+                                        label(genre.name)
+                                    }
                                 }
                             }
-                        }
-                        HStack{
-                            Text(movieDetails.title)
-                                .font(.system(size: 32, weight: .bold))
-                            Spacer()
                             HStack{
-                                Image("ic_star")
-                                    .resizable()
-                                    .renderingMode(.template)
-                                    .frame(width: 24, height: 24)
-                                
-                                Text(movieDetails.vote_average.toString)
-                                    .font(.system(size: 16, weight: .semibold))
+                                Text(movieDetails.title)
+                                    .font(.system(size: 32, weight: .bold))
+                                Spacer()
+                                HStack{
+                                    Image("ic_star")
+                                        .resizable()
+                                        .renderingMode(.template)
+                                        .frame(width: 24, height: 24)
+                                    
+                                    Text(movieDetails.vote_average.toString)
+                                        .font(.system(size: 16, weight: .semibold))
+                                }
                             }
+                            Text(movieDetails.release_date)
+                                .font(.system(size: 16, weight: .regular))
                         }
-                        Text(movieDetails.release_date)
-                            .font(.system(size: 16, weight: .regular))
+                        
+                        Text(movieDetails.overview)
+                            .font(.system(size: 14, weight: .regular))
                     }
-                    
-                    Text(movieDetails.overview)
-                        .font(.system(size: 14, weight: .regular))
                 }
+                
             case .failure(let error):
                 error.errorView()
             }
@@ -134,7 +137,7 @@ struct MovieDetailsView: View {
     }
     
     @ViewBuilder
-    func posterCard(movieDetails: MovieDetails?) -> some View {
+    private func posterCard(movieDetails: MovieDetails?) -> some View {
         ZStack{
             if let imageUrl = movieDetails?.imageLoader(size: "w500"), let url = URL(string: imageUrl) {
                 KFImage(url)
@@ -144,56 +147,58 @@ struct MovieDetailsView: View {
                     }
                     .overlay{
                         LinearGradient(
-                                    gradient: Gradient(stops: [
+                            gradient: Gradient(stops: [
                                 .init(color: Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)), location: 0),
                                 .init(color: Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)), location: 0.5),
                                 .init(color: Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.7)), location: 1)]),
-                                    startPoint: .top,
-                                    endPoint: .bottom)
+                            startPoint: .top,
+                            endPoint: .bottom)
                     }
             } else {
                 Rectangle()
                     .redacted(reason: .placeholder)
                     .shimmering()
             }
-            VStack{
-                    HStack{
-                        Spacer()
-                        Button(action: toggleScheme) {
-                            Image("ic_mode")
-                                .resizable()
-                                .renderingMode(.template)
-                                .frame(width: 32, height: 32)
-                                .foregroundStyle(Color.white)
-                        }
-                        .buttonStyle(PlainButtonStyle())
-                    }
-                
-                Spacer()
-                HStack{
-                    if let originalLanguage = movieDetails?.original_language {
-                        label(originalLanguage)
-                    } else {
-                        RoundedRectangle(cornerRadius: .infinity)
-                            .frame(width: 72, height: 38)
-                            .redacted(reason: .placeholder)
-                            .shimmering()
-                    }
-                    Spacer()
-                    if let movieStatus = movieDetails?.status {
-                        label(movieStatus)
-                    } else {
-                        RoundedRectangle(cornerRadius: .infinity)
-                            .frame(width: 72, height: 38)
-                            .redacted(reason: .placeholder)
-                            .shimmering()
-                    }
+        }
+        .frame(height: UIScreen.main.bounds.height * 0.6)
+        .cornerRadius(26)
+        .overlay(alignment: .topTrailing) {
+            Button(action: toggleScheme) {
+                Image("ic_mode")
+                    .resizable()
+                    .renderingMode(.template)
+                    .frame(width: 32, height: 32)
+                    .foregroundStyle(Color.white)
+            }
+            .buttonStyle(PlainButtonStyle())
+            .padding()
+        }
+        .overlay(alignment: .bottomLeading) {
+            ZStack{
+                if let originalLanguage = movieDetails?.original_language {
+                    label(originalLanguage)
+                } else {
+                    RoundedRectangle(cornerRadius: .infinity)
+                        .frame(width: 72, height: 38)
+                        .redacted(reason: .placeholder)
+                        .shimmering()
                 }
             }
             .padding()
         }
-        .frame(height: UIScreen.main.bounds.height * 0.6)
-        .cornerRadius(26)
+        .overlay(alignment: .bottomTrailing) {
+            ZStack{
+                if let movieStatus = movieDetails?.status {
+                    label(movieStatus)
+                } else {
+                    RoundedRectangle(cornerRadius: .infinity)
+                        .frame(width: 72, height: 38)
+                        .redacted(reason: .placeholder)
+                        .shimmering()
+                }
+            }
+            .padding()
+        }
     }
     
     @ViewBuilder
