@@ -30,6 +30,7 @@
 		99A037CB2B26EF3400964315 /* GlacialEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A037CA2B26EF3400964315 /* GlacialEffect.swift */; };
 		99A037CD2B26F57200964315 /* FailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A037CC2B26F57200964315 /* FailView.swift */; };
 		99A037CF2B27012800964315 /* CNError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A037CE2B27012800964315 /* CNError.swift */; };
+		99A037D12B2702FB00964315 /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A037D02B2702FB00964315 /* EmptyListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		99A037CA2B26EF3400964315 /* GlacialEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlacialEffect.swift; sourceTree = "<group>"; };
 		99A037CC2B26F57200964315 /* FailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailView.swift; sourceTree = "<group>"; };
 		99A037CE2B27012800964315 /* CNError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CNError.swift; sourceTree = "<group>"; };
+		99A037D02B2702FB00964315 /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +194,7 @@
 				99A037AD2B25F0F800964315 /* MovieCard.swift */,
 				99A037C12B26478500964315 /* PosterCard.swift */,
 				99A037CC2B26F57200964315 /* FailView.swift */,
+				99A037D02B2702FB00964315 /* EmptyListView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				99A037A42B25CD9B00964315 /* UiState.swift in Sources */,
 				99A037B42B26228A00964315 /* View.swift in Sources */,
 				99A0379C2B25CBDF00964315 /* NetworkManager.swift in Sources */,
+				99A037D12B2702FB00964315 /* EmptyListView.swift in Sources */,
 				99A037A12B25CCBE00964315 /* Movie.swift in Sources */,
 				99A0379A2B25CBCC00964315 /* MovieDetailsView.swift in Sources */,
 				99A037C92B26701200964315 /* BackHandler.swift in Sources */,

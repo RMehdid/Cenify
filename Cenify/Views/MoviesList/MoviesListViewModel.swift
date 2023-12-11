@@ -29,6 +29,11 @@ extension MoviesListView {
                     moviesList.append(contentsOf: try await MovieRepo.getMovies(page: page).results)
                     
                     DispatchQueue.main.async {
+                        guard !self.moviesList.isEmpty else {
+                            self.moviesListUiState = .empty
+                            return
+                        }
+                        
                         self.moviesListUiState = .success(self.moviesList)
                     }
                 } catch {
