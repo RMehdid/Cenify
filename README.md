@@ -16,9 +16,9 @@ Welcome to Cenify, a movie catalog app designed to showcase my iOS development s
 
 ## Movie Posters
 
-![Movie1](images/movie1.jpeg) ![Movie2](images/movie2.jpeg) ![Movie3](images/movie3.jpeg)
+![Movie1](/images/movie1.jpeg) ![Movie2](/images/movie2.jpeg) ![Movie3](/images/movie3.jpeg) </br>
 
- ![Movie4](images/movie4.jpeg) ![Movie5](images/movie5.jpeg) ![Movie6](images/movie6.jpeg)
+ ![Movie4](/images/movie4.jpeg) ![Movie5](/images/movie5.jpeg) ![Movie6](/images/movie6.jpeg)
 
 
 
