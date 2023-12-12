@@ -16,8 +16,8 @@ Welcome to Cenify, a movie catalog app designed to showcase my iOS development s
 
 ## Movie Posters
 
-<img src="images/movie1.jpg" width="200"/> <img src="images/movie2.jpg" width="200"/> <img src="images/movie3.jpg" width="200"/> <br>
-<img src="images/movie4.jpg" width="200"/> <img src="images/movie5.jpg" width="200"/> <img src="images/movie6.jpg" width="200"/>
+<img src="images/movie1.jpeg" width="200"/> <img src="images/movie2.jpeg" width="200"/> <img src="images/movie3.jpeg" width="200"/> <br>
+<img src="images/movie4.jpeg" width="200"/> <img src="images/movie5.jpeg" width="200"/> <img src="images/movie6.jpeg" width="200"/>
 
 
 
