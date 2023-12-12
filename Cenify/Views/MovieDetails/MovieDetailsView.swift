@@ -38,13 +38,11 @@ struct MovieDetailsView: View {
                             ForEach(MovieDetails.dumbForShimmer.genres){ genre in
                                 label(genre.name)
                                     .redacted(reason: .placeholder)
-                                    .shimmering()
                             }
                         }
                         HStack{
                             Text(MovieDetails.dumbForShimmer.title)
                                 .redacted(reason: .placeholder)
-                                .shimmering()
                             
                             Spacer()
                             HStack{
@@ -52,21 +50,17 @@ struct MovieDetailsView: View {
                                     .resizable()
                                     .frame(width: 24, height: 24)
                                     .redacted(reason: .placeholder)
-                                    .shimmering()
                                 
                                 Text(MovieDetails.dumbForShimmer.vote_average.toString)
                                     .redacted(reason: .placeholder)
-                                    .shimmering()
                             }
                         }
                         Text(MovieDetails.dumbForShimmer.release_date)
                             .redacted(reason: .placeholder)
-                            .shimmering()
                     }
                     
                     Text(MovieDetails.dumbForShimmer.overview)
                         .redacted(reason: .placeholder)
-                        .shimmering()
                 }
             case .success(let movieDetails):
                 ScrollView(showsIndicators: false) {
@@ -157,7 +151,6 @@ struct MovieDetailsView: View {
             } else {
                 Rectangle()
                     .redacted(reason: .placeholder)
-                    .shimmering()
             }
         }
         .frame(height: UIScreen.main.bounds.height * 0.6)
@@ -181,7 +174,6 @@ struct MovieDetailsView: View {
                     RoundedRectangle(cornerRadius: .infinity)
                         .frame(width: 72, height: 38)
                         .redacted(reason: .placeholder)
-                        .shimmering()
                 }
             }
             .padding()
@@ -194,7 +186,6 @@ struct MovieDetailsView: View {
                     RoundedRectangle(cornerRadius: .infinity)
                         .frame(width: 72, height: 38)
                         .redacted(reason: .placeholder)
-                        .shimmering()
                 }
             }
             .padding()

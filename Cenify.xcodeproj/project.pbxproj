@@ -3,11 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9959C3932B273F900051A069 /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 9959C3922B273F900051A069 /* Shimmer */; };
 		9959C3952B2770720051A069 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9959C3942B2770720051A069 /* Genre.swift */; };
 		99A037802B25CAA600964315 /* CenifyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A0377F2B25CAA600964315 /* CenifyApp.swift */; };
 		99A037842B25CAA800964315 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99A037832B25CAA800964315 /* Assets.xcassets */; };
@@ -71,7 +70,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9959C3932B273F900051A069 /* Shimmer in Frameworks */,
 				99A037BC2B2641F400964315 /* Kingfisher in Frameworks */,
 				99A037AB2B25DCE600964315 /* Alamofire in Frameworks */,
 			);
@@ -268,7 +266,6 @@
 			packageProductDependencies = (
 				99A037AA2B25DCE600964315 /* Alamofire */,
 				99A037BB2B2641F400964315 /* Kingfisher */,
-				9959C3922B273F900051A069 /* Shimmer */,
 			);
 			productName = Cenify;
 			productReference = 99A0377C2B25CAA600964315 /* Cenify.app */;
@@ -301,7 +298,6 @@
 			packageReferences = (
 				99A037A92B25DCE600964315 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				99A037BA2B2641F400964315 /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				9959C3912B273F900051A069 /* XCLocalSwiftPackageReference "../../../Downloads/SwiftUI-Shimmer-main" */,
 			);
 			productRefGroup = 99A0377D2B25CAA600964315 /* Products */;
 			projectDirPath = "";
@@ -572,13 +568,6 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		9959C3912B273F900051A069 /* XCLocalSwiftPackageReference "../../../Downloads/SwiftUI-Shimmer-main" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = "../../../Downloads/SwiftUI-Shimmer-main";
-		};
-/* End XCLocalSwiftPackageReference section */
-
 /* Begin XCRemoteSwiftPackageReference section */
 		99A037A92B25DCE600964315 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -599,10 +588,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		9959C3922B273F900051A069 /* Shimmer */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Shimmer;
-		};
 		99A037AA2B25DCE600964315 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 99A037A92B25DCE600964315 /* XCRemoteSwiftPackageReference "Alamofire" */;

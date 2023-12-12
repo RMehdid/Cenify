@@ -8,7 +8,7 @@
 import Foundation
 
 extension MovieDetailsView {
-    class Model: ObservableObject {
+    final class Model: ObservableObject {
         
         @Published private(set) var movieDetailsUiState: UiState<MovieDetails> = .empty
         

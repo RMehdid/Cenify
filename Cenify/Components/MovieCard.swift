@@ -32,7 +32,6 @@ struct MovieCard: View {
                 RoundedRectangle(cornerRadius: 8)
                     .frame(width: 70, height: 100)
                     .redacted(reason: .placeholder)
-                    .shimmering()
             }
             
             VStack(alignment: .leading, spacing: 16){
@@ -44,7 +43,6 @@ struct MovieCard: View {
                     } else {
                         Text(Movie.dumbForShimmer.title)
                             .redacted(reason: .placeholder)
-                            .shimmering()
                     }
                     
                     if let release_date = movie?.release_date {
@@ -53,7 +51,6 @@ struct MovieCard: View {
                     } else {
                         Text(Movie.dumbForShimmer.release_date)
                             .redacted(reason: .placeholder)
-                            .shimmering()
                     }
                 }
                 
@@ -71,7 +68,6 @@ struct MovieCard: View {
                     } else {
                         Text(Movie.dumbForShimmer.vote_average.toString)
                             .redacted(reason: .placeholder)
-                            .shimmering()
                     }
                 }
             }

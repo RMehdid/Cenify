@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Shimmer
 
 struct MoviesListView: View {
     
@@ -15,6 +14,7 @@ struct MoviesListView: View {
     @Environment(\.colorScheme) private var colorScheme
     
     @State private var selectedScheme: ColorScheme?
+    @State private var searchQuery: String = ""
     
     var body: some View {
         NavigationStack {
@@ -34,11 +34,8 @@ struct MoviesListView: View {
                     Spacer()
                 case .loading:
                     VStack{
-                        ForEach(0..<6){ index in
-                            RoundedRectangle(cornerRadius: 8)
-                                .fill(Color.secondary)
-                                .frame(height: 120)
-                                .shimmering()
+                        ForEach(0..<4){ index in
+                            MovieCard()
                         }
                     }
                 case .success(let movies):
@@ -51,7 +48,13 @@ struct MoviesListView: View {
                                     MovieCard(movie)
                                         .onAppear{
                                             if movie.id == movies.last?.id {
-                                                model.loadMoreMovies()
+                                                model.loadMoreMovies {
+                                                    if searchQuery.isEmpty {
+                                                        model.getMovies()
+                                                    } else {
+                                                        model.searchMovies(query: searchQuery)
+                                                    }
+                                                }
                                             }
                                         }
                                 }
@@ -70,6 +73,10 @@ struct MoviesListView: View {
             .backgroundEffect()
         }
         .preferredColorScheme(selectedScheme)
+        .searchable(text: $searchQuery)
+        .onSubmit(of: .search) {
+            model.searchMovies(query: searchQuery)
+        }
     }
     
     @ViewBuilder

@@ -8,12 +8,13 @@
 import Foundation
 
 extension MoviesListView {
-    class Model: ObservableObject {
+    final class Model: ObservableObject {
         
-        @Published private(set) var moviesListUiState: UiState<[Movie]> = .idle
-        @Published private(set) var isLoadingMore = false
+        @Published private(set) var moviesListUiState: UiState<[Movie]> = .loading
         
+        private var isLoadingMore = false
         private var moviesList = [Movie]()
+        private var searchedMovies = [Movie]()
         private var page: Int = 1
         private var endOfList: Bool = false
         
@@ -23,7 +24,7 @@ extension MoviesListView {
         
         
         func getMovies() {
-            self.moviesListUiState = .loading
+            self.searchedMovies = []
             Task {
                 do {
                     moviesList.append(contentsOf: try await MovieRepo.getMovies(page: page).results)
@@ -48,11 +49,37 @@ extension MoviesListView {
             }
         }
         
-        func loadMoreMovies() {
+        func searchMovies(query: String) {
+            self.moviesList = []
+            Task {
+                do {
+                    searchedMovies.append(contentsOf: try await MovieRepo.searchMovies(query: query, page: page).results)
+                    
+                    DispatchQueue.main.async {
+                        guard !self.moviesList.isEmpty else {
+                            self.moviesListUiState = .empty
+                            return
+                        }
+                        
+                        self.moviesListUiState = .success(self.searchedMovies)
+                    }
+                } catch {
+                    if isLoadingMore {
+                        self.isLoadingMore = false
+                    } else {
+                        DispatchQueue.main.async {
+                            self.moviesListUiState = .failure(error as? CNError ?? .unknown)
+                        }
+                    }
+                }
+            }
+        }
+        
+        func loadMoreMovies(_ forward: @escaping () -> Void) {
             if !endOfList {
                 page += 1
                 self.isLoadingMore = true
-                getMovies()
+                forward()
             }
         }
     }
