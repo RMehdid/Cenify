@@ -149,8 +149,9 @@ struct MovieDetailsView: View {
                             endPoint: .bottom)
                     }
             } else {
-                Image("ic_movie_poster")
-                    .resizable()
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(Color.gray)
+                    .redacted(reason: .placeholder)
             }
         }
         .frame(height: UIScreen.main.bounds.height * 0.6)
