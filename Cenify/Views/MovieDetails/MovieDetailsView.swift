@@ -36,7 +36,7 @@ struct MovieDetailsView: View {
                     VStack(alignment: .leading, spacing: 16){
                         HStack{
                             ForEach(MovieDetails.dumbForShimmer.genres){ genre in
-                                label(genre.name)
+                                CNLabel(genre.name)
                                     .redacted(reason: .placeholder)
                             }
                         }
@@ -70,7 +70,7 @@ struct MovieDetailsView: View {
                             ScrollView(.horizontal) {
                                 HStack{
                                     ForEach(movieDetails.genres){ genre in
-                                        label(genre.name)
+                                        CNLabel(genre.name)
                                     }
                                 }
                             }
@@ -169,7 +169,7 @@ struct MovieDetailsView: View {
         .overlay(alignment: .bottomLeading) {
             ZStack{
                 if let originalLanguage = movieDetails?.original_language {
-                    label(originalLanguage)
+                    CNLabel(originalLanguage, alwaysWhite: true)
                 } else {
                     RoundedRectangle(cornerRadius: .infinity)
                         .frame(width: 72, height: 38)
@@ -181,7 +181,7 @@ struct MovieDetailsView: View {
         .overlay(alignment: .bottomTrailing) {
             ZStack{
                 if let movieStatus = movieDetails?.status {
-                    label(movieStatus)
+                    CNLabel(movieStatus, alwaysWhite: true)
                 } else {
                     RoundedRectangle(cornerRadius: .infinity)
                         .frame(width: 72, height: 38)
@@ -189,36 +189,6 @@ struct MovieDetailsView: View {
                 }
             }
             .padding()
-        }
-    }
-    
-    @ViewBuilder
-    private func label(_ string: String) -> some View {
-        ZStack{
-            Text(string)
-                .font(.system(size: 12, weight: .medium))
-                .foregroundStyle(Color.white)
-                .padding(.vertical)
-                .frame(minWidth: 68)
-                .background {
-                    RoundedRectangle(cornerRadius: .infinity)
-                        .fill(LinearGradient(
-                            gradient: Gradient(stops: [
-                                .init(color: Color("CNGlacial").opacity(0.4), location: 0),
-                                .init(color: Color("CNGlacial").opacity(0.1), location: 1)]),
-                            startPoint: .topTrailing,
-                            endPoint: .bottomLeading))
-                    
-                    RoundedRectangle(cornerRadius: .infinity)
-                        .strokeBorder(LinearGradient(
-                            gradient: Gradient(stops: [
-                                .init(color: Color("CNGlacial").opacity(0.4), location: 0),
-                                .init(color: Color("CNGlacial").opacity(0.1), location: 1)]),
-                            startPoint: .topTrailing,
-                            endPoint: .bottomLeading),
-                                      lineWidth: 1
-                        )
-                }
         }
     }
 }
