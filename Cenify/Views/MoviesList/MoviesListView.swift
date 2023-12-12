@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct MoviesListView: View {
     
@@ -34,7 +35,10 @@ struct MoviesListView: View {
                     }
                 case .success(let movies):
                     ScrollView(showsIndicators: false){
-                        LazyVStack{
+                        LazyVStack {
+//                            ScrollView(showsIndicators: false) {
+//                                /*@START_MENU_TOKEN@*/Text("Placeholder")/*@END_MENU_TOKEN@*/
+//                            }
                             ForEach(movies) { movie in
                                 NavigationLink {
                                     MovieDetailsView(movie.id, selectedScheme: $selectedScheme)
@@ -75,8 +79,12 @@ struct MoviesListView: View {
         }
         .preferredColorScheme(selectedScheme)
         .searchable(text: $searchQuery)
-        .onSubmit(of: .search) {
-            model.searchMovies(query: searchQuery)
+        .onChange(of: searchQuery) { newQuery in
+            if searchQuery.count > 2 {
+                model.searchMovies(query: newQuery)
+            } else if searchQuery == "" {
+                model.getMovies()
+            }
         }
         .onAppear {
             let appearance = UINavigationBarAppearance()

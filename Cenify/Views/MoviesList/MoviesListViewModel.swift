@@ -14,7 +14,6 @@ extension MoviesListView {
         
         private var isLoadingMore = false
         private var moviesList = [Movie]()
-        private var searchedMovies = [Movie]()
         private var page: Int = 1
         
         init() {
@@ -23,7 +22,6 @@ extension MoviesListView {
         
         
         func getMovies() {
-            self.searchedMovies = []
             Task {
                 do {
                     moviesList.append(contentsOf: try await MovieRepo.getMovies(page: page).results)
@@ -49,10 +47,10 @@ extension MoviesListView {
         }
         
         func searchMovies(query: String) {
-            self.moviesList = []
+            
             Task {
                 do {
-                    searchedMovies.append(contentsOf: try await MovieRepo.searchMovies(query: query, page: page).results)
+                    let searchedMovies = try await MovieRepo.searchMovies(query: query, page: self.page).results
                     
                     DispatchQueue.main.async {
                         guard !self.moviesList.isEmpty else {
@@ -60,10 +58,10 @@ extension MoviesListView {
                             return
                         }
                         
-                        self.moviesListUiState = .success(self.searchedMovies)
+                        self.moviesListUiState = .success(searchedMovies)
                     }
                 } catch {
-                    if isLoadingMore {
+                    if self.isLoadingMore {
                         self.isLoadingMore = false
                     } else {
                         DispatchQueue.main.async {

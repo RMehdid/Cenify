@@ -29,12 +29,8 @@ struct CNLabel: View {
                 .overlay {
                     RoundedRectangle(cornerRadius: .infinity)
                         .strokeBorder(
-                            LinearGradient(
-                                colors: [Color("CNGlacial"), .clear],
-                                startPoint: .topTrailing,
-                                endPoint: .bottomLeading
-                            ),
-                            lineWidth: 1
+                            alwaysWhite ? .white :.primary,
+                            lineWidth: 2
                         )
                 }
                 .cornerRadius(.infinity)

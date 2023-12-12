@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		9959C3952B2770720051A069 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9959C3942B2770720051A069 /* Genre.swift */; };
 		9959C3972B283C8D0051A069 /* CNLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9959C3962B283C8D0051A069 /* CNLabel.swift */; };
+		9959C3992B28575D0051A069 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9959C3982B28575D0051A069 /* UIApplication.swift */; };
+		9959C39B2B2859AB0051A069 /* GenreItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9959C39A2B2859AB0051A069 /* GenreItem.swift */; };
 		99A037802B25CAA600964315 /* CenifyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A0377F2B25CAA600964315 /* CenifyApp.swift */; };
 		99A037842B25CAA800964315 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99A037832B25CAA800964315 /* Assets.xcassets */; };
 		99A037882B25CAA800964315 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99A037872B25CAA800964315 /* Preview Assets.xcassets */; };
@@ -38,6 +40,8 @@
 /* Begin PBXFileReference section */
 		9959C3942B2770720051A069 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		9959C3962B283C8D0051A069 /* CNLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CNLabel.swift; sourceTree = "<group>"; };
+		9959C3982B28575D0051A069 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
+		9959C39A2B2859AB0051A069 /* GenreItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreItem.swift; sourceTree = "<group>"; };
 		99A0377C2B25CAA600964315 /* Cenify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cenify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99A0377F2B25CAA600964315 /* CenifyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenifyApp.swift; sourceTree = "<group>"; };
 		99A037832B25CAA800964315 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 				99A037BF2B2645F000964315 /* MovieDetails.swift */,
 				99A037CE2B27012800964315 /* CNError.swift */,
 				9959C3942B2770720051A069 /* Genre.swift */,
+				9959C39A2B2859AB0051A069 /* GenreItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -235,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				99A037C52B265B4000964315 /* Double.swift */,
+				9959C3982B28575D0051A069 /* UIApplication.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -336,10 +342,12 @@
 				99A037CB2B26EF3400964315 /* GlacialEffect.swift in Sources */,
 				99A037802B25CAA600964315 /* CenifyApp.swift in Sources */,
 				99A0379E2B25CC4C00964315 /* MovieRepo.swift in Sources */,
+				9959C39B2B2859AB0051A069 /* GenreItem.swift in Sources */,
 				99A037CD2B26F57200964315 /* FailView.swift in Sources */,
 				99A037962B25CB9400964315 /* MoviesListViewModel.swift in Sources */,
 				99A037C42B26545F00964315 /* MovieDetailsViewModel.swift in Sources */,
 				99A037A42B25CD9B00964315 /* UiState.swift in Sources */,
+				9959C3992B28575D0051A069 /* UIApplication.swift in Sources */,
 				99A037B42B26228A00964315 /* View.swift in Sources */,
 				99A0379C2B25CBDF00964315 /* NetworkManager.swift in Sources */,
 				9959C3972B283C8D0051A069 /* CNLabel.swift in Sources */,

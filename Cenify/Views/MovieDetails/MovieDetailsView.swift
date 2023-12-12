@@ -67,7 +67,7 @@ struct MovieDetailsView: View {
                     VStack {
                         posterCard(movieDetails: movieDetails)
                         VStack(alignment: .leading){
-                            ScrollView(.horizontal) {
+                            ScrollView(.horizontal, showsIndicators: false) {
                                 HStack{
                                     ForEach(movieDetails.genres){ genre in
                                         CNLabel(genre.name)
