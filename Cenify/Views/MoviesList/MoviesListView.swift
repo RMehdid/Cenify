@@ -60,8 +60,6 @@ struct MoviesListView: View {
                                                 model.loadMoreMovies {
                                                     if searchQuery.isEmpty {
                                                         model.getMovies()
-                                                    } else {
-                                                        model.searchMovies(query: searchQuery)
                                                     }
                                                 }
                                             }

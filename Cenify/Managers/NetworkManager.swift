@@ -63,7 +63,7 @@ actor NetworkManager: GlobalActor {
                             continuation.resume(throwing: CNError.badReponse)
                         }
                     case .failure:
-                        continuation.resume(throwing: CNError.badReponse)
+                        continuation.resume(throwing: CNError.timout)
                     }
                 
                 default: continuation.resume(throwing: CNError.unknown)

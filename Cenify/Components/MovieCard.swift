@@ -20,18 +20,19 @@ struct MovieCard: View {
     
     var body: some View {
         HStack(spacing: 10){
-            if let url = URL(string: movie?.imageLoader(size: "w500") ?? "") {
+            if let imageUrl = movie?.imageLoader(size: "w500"), let url = URL(string: imageUrl) {
                 KFImage(url)
                     .resizable()
                     .placeholder { progress in
-                        Color.gray
+                        Image("ic_movie_poster")
                     }
                     .frame(width: 70, height: 100)
                     .cornerRadius(8)
             } else {
-                RoundedRectangle(cornerRadius: 8)
+                Image("ic_movie_poster")
+                    .resizable()
                     .frame(width: 70, height: 100)
-                    .redacted(reason: .placeholder)
+                    .cornerRadius(8)
             }
             
             VStack(alignment: .leading, spacing: 16){
