@@ -44,6 +44,7 @@
 		9959C39C2B2861250051A069 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		9959C39F2B2863B60051A069 /* CNLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CNLabel.swift; sourceTree = "<group>"; };
 		9959C3A12B288A030051A069 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		9959C3A32B289EBF0051A069 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		99A0377C2B25CAA600964315 /* Cenify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cenify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99A0377F2B25CAA600964315 /* CenifyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenifyApp.swift; sourceTree = "<group>"; };
 		99A037832B25CAA800964315 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -87,6 +88,7 @@
 		99A037732B25CAA600964315 = {
 			isa = PBXGroup;
 			children = (
+				9959C3A32B289EBF0051A069 /* README.md */,
 				99A0377E2B25CAA600964315 /* Cenify */,
 				99A0377D2B25CAA600964315 /* Products */,
 			);
