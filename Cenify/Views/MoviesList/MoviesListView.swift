@@ -34,20 +34,21 @@ struct MoviesListView: View {
                         ForEach(0..<4){ index in
                             MovieCard()
                         }
+                        .padding(.horizontal)
                     }
                 case .success(let movies):
                     ScrollView(showsIndicators: false){
                         LazyVStack {
-                            ScrollView(showsIndicators: false) {
+                            ScrollView(.horizontal, showsIndicators: false) {
                                 HStack {
                                     ForEach(GenreItem.allCases, id: \.rawValue) { genre in
-                                        CNToggledLabel(genre.rawValue) {
-                                            handleGenre(genre: genre) {
-                                                model.getMovies(preferredGenre: selectedGenres)
-                                            }
+                                        let isSelected = selectedGenres.contains(where: { $0.rawValue == genre.rawValue })
+                                        CNToggledLabel(genre, isSelected: isSelected) { genre in
+                                            handleGenre(genre: genre, isSelected: isSelected)
                                         }
                                     }
                                 }
+                                .padding(.horizontal)
                             }
                             ForEach(movies) { movie in
                                 NavigationLink {
@@ -144,14 +145,18 @@ struct MoviesListView: View {
         }
     }
     
-    func handleGenre(genre: GenreItem, forward: @escaping () -> Void) -> Void {
-        if selectedGenres.contains(where: { $0.rawValue == genre.rawValue }) {
+    func handleGenre(genre: GenreItem, isSelected: Bool) -> Void {
+        if isSelected {
             selectedGenres.removeAll(where: { $0.rawValue == genre.rawValue})
         } else {
             selectedGenres.append(genre)
         }
         
-        forward()
+        if selectedGenres.isEmpty {
+            model.getMovies()
+        } else {
+            model.filterMovies(preferredGenre: selectedGenres)
+        }
     }
 }
 

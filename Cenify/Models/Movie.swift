@@ -15,12 +15,12 @@ struct Movie: Decodable, Identifiable {
     let id: Int
     let title: String
     let release_date: String
-    let poster_path: String
+    let poster_path: String?
     let vote_average: Double
     
-    func imageLoader(size: String) -> String {
-        guard let imageBaseUrl = Bundle.main.object(forInfoDictionaryKey: "ImageBaseUrl") as? String else {
-            return ""
+    func imageLoader(size: String) -> String? {
+        guard let poster_path = poster_path, let imageBaseUrl = Bundle.main.object(forInfoDictionaryKey: "ImageBaseUrl") as? String else {
+            return nil
         }
         
         return imageBaseUrl + size + poster_path

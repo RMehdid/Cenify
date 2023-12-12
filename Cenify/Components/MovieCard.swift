@@ -77,6 +77,7 @@ struct MovieCard: View {
         .padding(10)
         .background(.ultraThinMaterial.tertiary)
         .cornerRadius(8)
+        .shadow(radius: 4)
     }
 }
 

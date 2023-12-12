@@ -9,40 +9,47 @@ import SwiftUI
 
 struct CNToggledLabel: View {
     
-    @State private var isToggeled: Bool = false
+    private let genre: GenreItem
+    private let isSelected: Bool
+    private let didToggle: (GenreItem) -> Void
     
-    private var string: String
-    
-    private var toggeled: () -> Void
-    
-    init(_ string: String, toggeled: @escaping () -> Void) {
-        self.string = string
-        self.toggeled = toggeled
+    init(_ genre: GenreItem, isSelected: Bool, didToggle: @escaping (GenreItem) -> Void) {
+        self.genre = genre
+        self.isSelected = isSelected
+        self.didToggle = didToggle
     }
     
     var body: some View {
         Button{
-            toggeled()
-            isToggeled.toggle()
-            debugPrint(isToggeled)
+            didToggle(genre)
         } label: {
             ZStack{
-                Text(string)
-                    .font(.system(size: 12, weight: .medium))
-                    .foregroundStyle(isToggeled ? Color("CNGlacial") : Color.primary)
-                    .padding(.vertical)
-                    .frame(minWidth: 68)
-                    .padding(.horizontal, 4)
-                    .background(.ultraThinMaterial)
-                    .overlay {
-                        RoundedRectangle(cornerRadius: .infinity)
-                            .strokeBorder(
-                                .primary,
-                                lineWidth: 2
-                            )
-                    }
-                    .cornerRadius(.infinity)
+                if isSelected {
+                    Text(genre.rawValue)
+                        .font(.system(size: 12, weight: .medium))
+                        .foregroundStyle(Color("CNBack"))
+                        .padding(.vertical)
+                        .frame(minWidth: 68)
+                        .padding(.horizontal, 4)
+                        .background(Color("CNGlacial"))
+                } else {
+                    Text(genre.rawValue)
+                        .font(.system(size: 12, weight: .medium))
+                        .foregroundStyle(Color.primary)
+                        .padding(.vertical)
+                        .frame(minWidth: 68)
+                        .padding(.horizontal, 4)
+                        .background(.ultraThinMaterial)
+                }
             }
+            .overlay {
+                RoundedRectangle(cornerRadius: .infinity)
+                    .strokeBorder(
+                        .primary,
+                        lineWidth: 2
+                    )
+            }
+            .cornerRadius(.infinity)
         }
         .buttonStyle(PlainButtonStyle())
     }
