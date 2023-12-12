@@ -69,6 +69,12 @@
 		99A037CC2B26F57200964315 /* FailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailView.swift; sourceTree = "<group>"; };
 		99A037CE2B27012800964315 /* CNError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CNError.swift; sourceTree = "<group>"; };
 		99A037D02B2702FB00964315 /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
+		99A6968B2B28CD2E00BECC94 /* movie1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = movie1.jpeg; sourceTree = "<group>"; };
+		99A6968C2B28CD4500BECC94 /* movie2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = movie2.jpeg; sourceTree = "<group>"; };
+		99A6968D2B28CD6300BECC94 /* movie3.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = movie3.jpeg; sourceTree = "<group>"; };
+		99A6968E2B28CD6D00BECC94 /* movie4.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = movie4.jpeg; sourceTree = "<group>"; };
+		99A6968F2B28CD7B00BECC94 /* movie5.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = movie5.jpeg; sourceTree = "<group>"; };
+		99A696902B28CD8600BECC94 /* movie6.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = movie6.jpeg; sourceTree = "<group>"; };
 		99BF79632B271DDF00FB628D /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,6 +94,7 @@
 		99A037732B25CAA600964315 = {
 			isa = PBXGroup;
 			children = (
+				99A696892B28CCF400BECC94 /* images */,
 				9959C3A32B289EBF0051A069 /* README.md */,
 				99A0377E2B25CAA600964315 /* Cenify */,
 				99A0377D2B25CAA600964315 /* Products */,
@@ -248,6 +255,19 @@
 				9959C39C2B2861250051A069 /* Array.swift */,
 			);
 			path = Foundation;
+			sourceTree = "<group>";
+		};
+		99A696892B28CCF400BECC94 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				99A6968B2B28CD2E00BECC94 /* movie1.jpeg */,
+				99A6968C2B28CD4500BECC94 /* movie2.jpeg */,
+				99A6968D2B28CD6300BECC94 /* movie3.jpeg */,
+				99A6968E2B28CD6D00BECC94 /* movie4.jpeg */,
+				99A6968F2B28CD7B00BECC94 /* movie5.jpeg */,
+				99A696902B28CD8600BECC94 /* movie6.jpeg */,
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 		99BF79622B271DA300FB628D /* Resources */ = {

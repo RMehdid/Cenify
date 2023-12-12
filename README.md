@@ -14,6 +14,14 @@ Welcome to Cenify, a movie catalog app designed to showcase my iOS development s
 
 - **Genre Exploration:** Explore movies by genres to discover films that match your preferences.
 
+## Movie Posters
+
+![Movie1](Images/movie1.jpg) ![Movie2](Images/movie2.jpg) ![Movie3](Images/movie3.jpg)
+
+ ![Movie4](Images/movie4.jpg) ![Movie5](Images/movie5.jpg) ![Movie6](Images/movie6.jpg)
+
+
+
 ## How to Use
 
 1. Clone the repository to your local machine.
