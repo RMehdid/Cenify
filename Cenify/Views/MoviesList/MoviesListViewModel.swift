@@ -16,7 +16,6 @@ extension MoviesListView {
         private var moviesList = [Movie]()
         private var searchedMovies = [Movie]()
         private var page: Int = 1
-        private var endOfList: Bool = false
         
         init() {
             self.getMovies()
@@ -76,11 +75,9 @@ extension MoviesListView {
         }
         
         func loadMoreMovies(_ forward: @escaping () -> Void) {
-            if !endOfList {
-                page += 1
-                self.isLoadingMore = true
-                forward()
-            }
+            page += 1
+            self.isLoadingMore = true
+            forward()
         }
     }
 }

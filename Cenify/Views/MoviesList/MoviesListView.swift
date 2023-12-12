@@ -19,12 +19,6 @@ struct MoviesListView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 0){
-                VStack{
-                    navbar()
-                    Rectangle()
-                        .frame(height: 2)
-                        .opacity(0.4)
-                }
                 switch model.moviesListUiState {
                 case .idle:
                     EmptyView()
@@ -69,13 +63,29 @@ struct MoviesListView: View {
                     Spacer()
                 }
             }
-            .padding()
+            .ignoresSafeArea(.all, edges: .bottom)
+            .padding(.horizontal)
             .backgroundEffect()
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    navbar()
+                }
+            }
         }
         .preferredColorScheme(selectedScheme)
         .searchable(text: $searchQuery)
         .onSubmit(of: .search) {
             model.searchMovies(query: searchQuery)
+        }
+        .onAppear {
+            let appearance = UINavigationBarAppearance()
+            appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
+            appearance.backgroundColor = UIColor(Color.primary.opacity(0.05))
+            
+            UINavigationBar.appearance().standardAppearance = appearance
+            
+            UINavigationBar.appearance().scrollEdgeAppearance = appearance
         }
     }
     
@@ -93,6 +103,7 @@ struct MoviesListView: View {
             }
             .buttonStyle(PlainButtonStyle())
         }
+        .padding(.vertical)
     }
     
     private func toggleScheme() {
