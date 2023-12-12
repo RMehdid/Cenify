@@ -7,16 +7,8 @@
 
 import Foundation
 
-extension Array where Element == GenreItem {
-    func stringValue(_ separator: String) -> String? {
-        guard var string = self.first?.rawValue else {
-            return nil
-        }
-        
-        for item in self {
-            string.append(separator + item.rawValue)
-        }
-        
-        return string
+extension Array where Element == Genre {
+    func stringValue(_ separator: String) -> String {
+        return self.map { String($0.id) }.joined(separator: separator)
     }
 }

@@ -11,6 +11,7 @@ extension MoviesListView {
     final class Model: ObservableObject {
         
         @Published private(set) var moviesListUiState: UiState<[Movie]> = .loading
+        @Published private(set) var genresListUiState: UiState<[Genre]> = .loading
         
         private var isLoadingMore = false
         private var moviesList = [Movie]()
@@ -18,13 +19,18 @@ extension MoviesListView {
         
         init() {
             self.getMovies()
+            self.getGenreList()
         }
         
         
-        func getMovies(preferredGenre: [GenreItem] = []) {
+        func getMovies(preferredGenre: [Genre] = []) {
             Task {
                 do {
-                    moviesList.append(contentsOf: try await MovieRepo.getMovies(genres: [], page: page).results)
+                    if preferredGenre.isEmpty {
+                        moviesList.append(contentsOf: try await MovieRepo.getMovies(page: page).results)
+                    } else {
+                        moviesList.append(contentsOf: try await MovieRepo.getMovies(genres: preferredGenre, page: page).results)
+                    }
                     
                     DispatchQueue.main.async {
                         guard !self.moviesList.isEmpty else {
@@ -46,7 +52,7 @@ extension MoviesListView {
             }
         }
         
-        func filterMovies(preferredGenre: [GenreItem]) {
+        func filterMovies(preferredGenre: [Genre]) {
             self.moviesList = []
             self.moviesListUiState = .loading
             getMovies(preferredGenre: preferredGenre)
@@ -73,6 +79,31 @@ extension MoviesListView {
                     } else {
                         DispatchQueue.main.async {
                             self.moviesListUiState = .failure(error as? CNError ?? .unknown)
+                        }
+                    }
+                }
+            }
+        }
+        
+        func getGenreList() {
+            Task {
+                do {
+                    let genresList = try await MovieRepo.getGenres().genres
+                    
+                    DispatchQueue.main.async {
+                        guard !genresList.isEmpty else {
+                            self.genresListUiState = .empty
+                            return
+                        }
+                        
+                        self.genresListUiState = .success(genresList)
+                    }
+                } catch {
+                    if isLoadingMore {
+                        self.isLoadingMore = false
+                    } else {
+                        DispatchQueue.main.async {
+                            self.genresListUiState = .failure(error as? CNError ?? .unknown)
                         }
                     }
                 }

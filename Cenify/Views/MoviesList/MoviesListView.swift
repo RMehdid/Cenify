@@ -17,7 +17,7 @@ struct MoviesListView: View {
     @State private var selectedScheme: ColorScheme?
     @State private var searchQuery: String = ""
     
-    @State private var selectedGenres = [GenreItem]()
+    @State private var selectedGenres = [Genre]()
     
     var body: some View {
         NavigationStack {
@@ -39,16 +39,21 @@ struct MoviesListView: View {
                 case .success(let movies):
                     ScrollView(showsIndicators: false){
                         LazyVStack {
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                HStack {
-                                    ForEach(GenreItem.allCases, id: \.rawValue) { genre in
-                                        let isSelected = selectedGenres.contains(where: { $0.rawValue == genre.rawValue })
-                                        CNToggledLabel(genre, isSelected: isSelected) { genre in
-                                            handleGenre(genre: genre, isSelected: isSelected)
+                            switch model.genresListUiState {
+                            case .idle, .empty, .loading, .failure:
+                                EmptyView()
+                            case .success(let genres):
+                                ScrollView(.horizontal, showsIndicators: false) {
+                                    HStack {
+                                        ForEach(genres) { genre in
+                                            let isSelected = selectedGenres.contains(where: { $0.id == genre.id })
+                                            CNLabel(genre, isSelected: isSelected) { genre in
+                                                handleGenre(genre: genre, isSelected: isSelected)
+                                            }
                                         }
                                     }
+                                    .padding(.horizontal)
                                 }
-                                .padding(.horizontal)
                             }
                             ForEach(movies) { movie in
                                 NavigationLink {
@@ -143,9 +148,9 @@ struct MoviesListView: View {
         }
     }
     
-    func handleGenre(genre: GenreItem, isSelected: Bool) -> Void {
+    func handleGenre(genre: Genre, isSelected: Bool) -> Void {
         if isSelected {
-            selectedGenres.removeAll(where: { $0.rawValue == genre.rawValue})
+            selectedGenres.removeAll(where: { $0.id == genre.id})
         } else {
             selectedGenres.append(genre)
         }

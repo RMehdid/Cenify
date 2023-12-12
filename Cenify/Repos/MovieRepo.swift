@@ -12,9 +12,10 @@ class MovieRepo {
         case moviesList = "/discover/movie"
         case movieDetails = "/movie/{{id}}"
         case searchMovies = "/search/movie"
+        case genresList = "/genre/movie/list"
     }
     
-    static func getMovies(genres: [GenreItem], page: Int) async throws -> Response<[Movie]> {
+    static func getMovies(genres: [Genre] = [], page: Int) async throws -> Response<[Movie]> {
         let body : [String: Any] = [
             "page": page,
             "with_genres": genres.stringValue(",")
@@ -33,5 +34,9 @@ class MovieRepo {
         ]
         
         return try await NetworkManager.shared.get(endpoint: Endpoint.searchMovies.rawValue, query: body)
+    }
+    
+    static func getGenres() async throws -> GenreResponse<[Genre]> {
+        return try await NetworkManager.shared.get(endpoint: Endpoint.genresList.rawValue)
     }
 }

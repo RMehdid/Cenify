@@ -36,7 +36,7 @@ struct MovieDetailsView: View {
                     VStack(alignment: .leading, spacing: 16){
                         HStack{
                             ForEach(MovieDetails.dumbForShimmer.genres){ genre in
-                                CNLabel(genre.name)
+                                CNLabel(genre)
                                     .redacted(reason: .placeholder)
                             }
                         }
@@ -70,7 +70,7 @@ struct MovieDetailsView: View {
                             ScrollView(.horizontal, showsIndicators: false) {
                                 HStack{
                                     ForEach(movieDetails.genres){ genre in
-                                        CNLabel(genre.name)
+                                        CNLabel(genre)
                                     }
                                 }
                             }
@@ -169,7 +169,7 @@ struct MovieDetailsView: View {
         .overlay(alignment: .bottomLeading) {
             ZStack{
                 if let originalLanguage = movieDetails?.original_language {
-                    CNLabel(originalLanguage, alwaysWhite: true)
+                    CNLabel(string: originalLanguage)
                 } else {
                     RoundedRectangle(cornerRadius: .infinity)
                         .frame(width: 72, height: 38)
@@ -181,7 +181,7 @@ struct MovieDetailsView: View {
         .overlay(alignment: .bottomTrailing) {
             ZStack{
                 if let movieStatus = movieDetails?.status {
-                    CNLabel(movieStatus, alwaysWhite: true)
+                    CNLabel(string: movieStatus)
                 } else {
                     RoundedRectangle(cornerRadius: .infinity)
                         .frame(width: 72, height: 38)
