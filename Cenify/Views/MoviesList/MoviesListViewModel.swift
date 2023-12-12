@@ -54,7 +54,6 @@ extension MoviesListView {
         
         func filterMovies(preferredGenre: [Genre]) {
             self.moviesList = []
-            self.moviesListUiState = .loading
             getMovies(preferredGenre: preferredGenre)
         }
         
