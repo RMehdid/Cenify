@@ -32,15 +32,13 @@ git clone https://github.com/RMehdid/Cenify.git
 
 - **Swift:** The app is developed using Swift, Apple's programming language for iOS.
 
+- **SwiftUI** The user interface is built using SwiftUI, Apple's declarative framework for building user interfaces.
+
 - **Xcode:** The project is built and run using Xcode, Apple's integrated development environment.
 
 ## Code
 
 The app demonstrates proficiency in iOS development and API integration. For specific details regarding the codebase, please refer to the provided code files.
-
-## License
-
-This project is created for the purpose of showcasing iOS development skills within the context of Cenify. All rights reserved. The codebase is not to be redistributed or used without explicit permission from the author.
 
 ## Contact
 
