@@ -26,9 +26,28 @@ struct MoviesListView: View {
                 case .idle:
                     EmptyView()
                 case .empty:
-                    Spacer()
-                    EmptyListView()
-                    Spacer()
+                    VStack{
+                        switch model.genresListUiState {
+                        case .idle, .empty, .loading, .failure:
+                            EmptyView()
+                        case .success(let genres):
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                HStack {
+                                    ForEach(genres) { genre in
+                                        let isSelected = selectedGenres.contains(where: { $0.id == genre.id })
+                                        CNLabel(genre, isSelected: isSelected) { genre in
+                                            handleGenre(genre: genre, isSelected: isSelected)
+                                        }
+                                    }
+                                }
+                                .padding(.horizontal)
+                            }
+                        }
+                        Spacer()
+                        EmptyListView()
+                        Spacer()
+                    }
+                    .padding(.vertical)
                 case .loading:
                     VStack{
                         ForEach(0..<4){ index in
@@ -77,9 +96,28 @@ struct MoviesListView: View {
                         .padding(.vertical)
                     }
                 case .failure(let error):
-                    Spacer()
-                    error.errorView()
-                    Spacer()
+                    VStack{
+                        switch model.genresListUiState {
+                        case .idle, .empty, .loading, .failure:
+                            EmptyView()
+                        case .success(let genres):
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                HStack {
+                                    ForEach(genres) { genre in
+                                        let isSelected = selectedGenres.contains(where: { $0.id == genre.id })
+                                        CNLabel(genre, isSelected: isSelected) { genre in
+                                            handleGenre(genre: genre, isSelected: isSelected)
+                                        }
+                                    }
+                                }
+                                .padding(.horizontal)
+                            }
+                        }
+                        Spacer()
+                        error.errorView()
+                        Spacer()
+                    }
+                    .padding(.vertical)
                 }
             }
             .ignoresSafeArea(.all, edges: .bottom)
@@ -155,11 +193,7 @@ struct MoviesListView: View {
             selectedGenres.append(genre)
         }
         
-        if selectedGenres.isEmpty {
-            model.getMovies()
-        } else {
-            model.filterMovies(preferredGenre: selectedGenres)
-        }
+        model.filterMovies(preferredGenre: selectedGenres)
     }
 }
 
