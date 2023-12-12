@@ -14,9 +14,10 @@ class MovieRepo {
         case searchMovies = "/search/movie"
     }
     
-    static func getMovies(page: Int) async throws -> Response<[Movie]> {
-        let body = [
-            "page": page
+    static func getMovies(genres: [GenreItem], page: Int) async throws -> Response<[Movie]> {
+        let body : [String: Any] = [
+            "page": page,
+            "with_genres": genres.stringValue(",")
         ]
         
         return try await NetworkManager.shared.get(endpoint: Endpoint.moviesList.rawValue, query: body)

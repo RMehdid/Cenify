@@ -55,7 +55,7 @@ struct MovieCard: View {
                 }
                 
                 HStack(spacing: 6){
-                    if let movie = movie {
+                    if movie != nil {
                         Image("ic_star")
                             .resizable()
                             .renderingMode(.template)
@@ -75,10 +75,11 @@ struct MovieCard: View {
             Spacer()
         }
         .padding(10)
-        .glacialEffect(8)
+        .background(.ultraThinMaterial.tertiary)
+        .cornerRadius(8)
     }
 }
 
 #Preview {
-    MovieCard()
+    MoviesListView()
 }

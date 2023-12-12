@@ -17,6 +17,8 @@ struct MoviesListView: View {
     @State private var selectedScheme: ColorScheme?
     @State private var searchQuery: String = ""
     
+    @State private var selectedGenres = [GenreItem]()
+    
     var body: some View {
         NavigationStack {
             VStack(spacing: 0){
@@ -36,9 +38,17 @@ struct MoviesListView: View {
                 case .success(let movies):
                     ScrollView(showsIndicators: false){
                         LazyVStack {
-//                            ScrollView(showsIndicators: false) {
-//                                /*@START_MENU_TOKEN@*/Text("Placeholder")/*@END_MENU_TOKEN@*/
-//                            }
+                            ScrollView(showsIndicators: false) {
+                                HStack {
+                                    ForEach(GenreItem.allCases, id: \.rawValue) { genre in
+                                        CNToggledLabel(genre.rawValue) {
+                                            handleGenre(genre: genre) {
+                                                model.getMovies(preferredGenre: selectedGenres)
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                             ForEach(movies) { movie in
                                 NavigationLink {
                                     MovieDetailsView(movie.id, selectedScheme: $selectedScheme)
@@ -58,6 +68,7 @@ struct MoviesListView: View {
                                 }
                                 .buttonStyle(PlainButtonStyle())
                             }
+                            .padding(.horizontal)
                         }
                         .padding(.vertical)
                     }
@@ -68,7 +79,6 @@ struct MoviesListView: View {
                 }
             }
             .ignoresSafeArea(.all, edges: .bottom)
-            .padding(.horizontal)
             .backgroundEffect()
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -80,7 +90,7 @@ struct MoviesListView: View {
         .preferredColorScheme(selectedScheme)
         .searchable(text: $searchQuery)
         .onChange(of: searchQuery) { newQuery in
-            if searchQuery.count > 2 {
+            if searchQuery.count >= 2 {
                 model.searchMovies(query: newQuery)
             } else if searchQuery == "" {
                 model.getMovies()
@@ -132,6 +142,16 @@ struct MoviesListView: View {
             default: break
             }
         }
+    }
+    
+    func handleGenre(genre: GenreItem, forward: @escaping () -> Void) -> Void {
+        if selectedGenres.contains(where: { $0.rawValue == genre.rawValue }) {
+            selectedGenres.removeAll(where: { $0.rawValue == genre.rawValue})
+        } else {
+            selectedGenres.append(genre)
+        }
+        
+        forward()
     }
 }
 

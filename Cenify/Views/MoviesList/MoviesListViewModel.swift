@@ -21,10 +21,10 @@ extension MoviesListView {
         }
         
         
-        func getMovies() {
+        func getMovies(preferredGenre: [GenreItem] = []) {
             Task {
                 do {
-                    moviesList.append(contentsOf: try await MovieRepo.getMovies(page: page).results)
+                    moviesList.append(contentsOf: try await MovieRepo.getMovies(genres: preferredGenre, page: page).results)
                     
                     DispatchQueue.main.async {
                         guard !self.moviesList.isEmpty else {
@@ -47,7 +47,7 @@ extension MoviesListView {
         }
         
         func searchMovies(query: String) {
-            
+            self.moviesList = []
             Task {
                 do {
                     let searchedMovies = try await MovieRepo.searchMovies(query: query, page: self.page).results

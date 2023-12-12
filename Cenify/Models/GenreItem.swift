@@ -7,6 +7,13 @@
 
 import Foundation
 
-//enum GenreItem {
-//    case 
-//}
+enum GenreItem: String, CaseIterable {
+    case action = "Action"
+    case adventure = "Adventure"
+    case animation = "Animation"
+    case biography = "Biography"
+    case comedy = "Comedy"
+    case crime = "Crime"
+    case scifi = "Sci-Fi"
+    case war = "War"
+}
