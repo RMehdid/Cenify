@@ -1,16 +1,16 @@
 //
-//  Movie.swift
+//  TVShow.swift
 //  Cenify
 //
-//  Created by Samy Mehdid on 10/12/2023.
+//  Created by Samy Mehdid on 18/12/2023.
 //
 
 import Foundation
 
-struct Movie: MediaProtocol {
+struct TVShow: MediaProtocol {
     let id: Int
     let title: String
-    let release_date: String
+    let first_air_date: String
     let poster_path: String?
     let vote_average: Double
     
@@ -22,5 +22,5 @@ struct Movie: MediaProtocol {
         return imageBaseUrl + size + poster_path
     }
     
-    static let dumbForShimmer = Movie(id: 0, title: "dumb title", release_date: "2020", poster_path: "/hdgfhjs.png", vote_average: 7.7)
+    static let dumbForShimmer = TVShow(id: 0, title: "dumb title", first_air_date: "2020", poster_path: "/hdgfhjs.png", vote_average: 7.7)
 }

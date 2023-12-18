@@ -50,5 +50,5 @@ struct BackgroundEffect: ViewModifier {
 }
 
 #Preview {
-    MoviesListView()
+    MoviesListView(selectedScheme: .constant(.dark))
 }
