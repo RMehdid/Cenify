@@ -26,11 +26,8 @@ extension MoviesListView {
         func getMovies(preferredGenre: [Genre] = []) {
             Task {
                 do {
-                    if preferredGenre.isEmpty {
-                        moviesList.append(contentsOf: try await MovieRepo.getMovies(page: page).results)
-                    } else {
-                        moviesList.append(contentsOf: try await MovieRepo.getMovies(genres: preferredGenre, page: page).results)
-                    }
+                    
+                    moviesList.append(contentsOf: try await MovieRepo.getMovies(genres: preferredGenre, page: page).results)
                     
                     DispatchQueue.main.async {
                         guard !self.moviesList.isEmpty else {
