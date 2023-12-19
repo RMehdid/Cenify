@@ -104,7 +104,7 @@ extension TVShowsListView {
             }
         }
         
-        func loadMoreMovies(_ forward: @escaping () -> Void) {
+        func loadMoreTvshows(_ forward: @escaping () -> Void) {
             page += 1
             self.isLoadingMore = true
             forward()

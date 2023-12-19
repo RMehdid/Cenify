@@ -6,13 +6,177 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct TvShowDetailsView: View {
+    private let id: Int
+    
+    @Binding private var selectedScheme: ColorScheme?
+    
+    @StateObject private var model = Model()
+    
+    @Environment(\.presentationMode) private var presentationMode
+    @Environment(\.colorScheme) private var colorScheme
+    
+    @State private var selectedSeason: Season?
+    
+    init(_ id: Int, selectedScheme: Binding<ColorScheme?>) {
+        self.id = id
+        self._selectedScheme = selectedScheme
+    }
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack{
+            switch model.tvShowDetailsUiState {
+            case .empty, .idle:
+                EmptyView()
+            case .loading:
+                VStack(spacing: 16){
+                    posterCard(tvShowDetails: nil)
+                    
+                    VStack(alignment: .leading, spacing: 16){
+                        HStack{
+                            ForEach(MovieDetails.dumbForShimmer.genres){ genre in
+                                CNLabel(genre)
+                                    .redacted(reason: .placeholder)
+                            }
+                        }
+                        HStack{
+                            Text(MovieDetails.dumbForShimmer.title)
+                                .redacted(reason: .placeholder)
+                            
+                            Spacer()
+                            HStack{
+                                Image("ic_star")
+                                    .resizable()
+                                    .frame(width: 24, height: 24)
+                                    .redacted(reason: .placeholder)
+                                
+                                Text(MovieDetails.dumbForShimmer.vote_average.toString)
+                                    .redacted(reason: .placeholder)
+                            }
+                        }
+                        Text(MovieDetails.dumbForShimmer.release_date)
+                            .redacted(reason: .placeholder)
+                    }
+                    
+                    Text(MovieDetails.dumbForShimmer.overview)
+                        .redacted(reason: .placeholder)
+                }
+            case .success(let tvShowDetails):
+                ScrollView(showsIndicators: false) {
+                    VStack {
+                        posterCard(tvShowDetails: tvShowDetails)
+                        VStack(alignment: .leading){
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                HStack{
+                                    ForEach(tvShowDetails.genres){ genre in
+                                        CNLabel(genre)
+                                    }
+                                }
+                            }
+                            HStack{
+                                Text(selectedSeason?.name ?? tvShowDetails.title)
+                                    .font(.system(size: 32, weight: .bold))
+                                Spacer()
+                                HStack{
+                                    Image("ic_star")
+                                        .resizable()
+                                        .renderingMode(.template)
+                                        .frame(width: 24, height: 24)
+                                    
+                                    Text(selectedSeason?.vote_average.toString ?? tvShowDetails.vote_average.toString)
+                                        .font(.system(size: 16, weight: .semibold))
+                                }
+                            }
+                            Text(selectedSeason?.air_date ?? tvShowDetails.release_date)
+                                .font(.system(size: 16, weight: .regular))
+                        }
+                        
+                        Text(selectedSeason?.overview ?? tvShowDetails.overview)
+                            .font(.system(size: 14, weight: .regular))
+                    }
+                }
+                
+            case .failure(let error):
+                error.errorView()
+            }
+        }
+        .padding(.horizontal)
+        .onAppear {
+            model.getTvShowDetail(id)
+        }
+        .navigationBarHidden(true)
+        .backgroundEffect()
+        .backOnSwipe(presentationMode: presentationMode)
+    }
+    
+    @ViewBuilder
+    private func posterCard(tvShowDetails: TvShowDetail?) -> some View {
+        ZStack{
+            if let imageUrl = selectedSeason?.imageLoader(size: "w500") ?? tvShowDetails?.imageLoader(size: "w500"), let url = URL(string: imageUrl) {
+                KFImage(url)
+                    .resizable()
+                    .placeholder { progress in
+                        Color.gray
+                    }
+                    .overlay{
+                        LinearGradient(
+                            gradient: Gradient(stops: [
+                                .init(color: Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)), location: 0),
+                                .init(color: Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)), location: 0.5),
+                                .init(color: Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.7)), location: 1)]),
+                            startPoint: .top,
+                            endPoint: .bottom)
+                    }
+            } else {
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(Color.gray)
+                    .redacted(reason: .placeholder)
+            }
+        }
+        .frame(height: UIScreen.main.bounds.height * 0.6)
+        .cornerRadius(26)
+        .overlay(alignment: .topTrailing) {
+            Button {
+                selectedScheme.toggleScheme(availableScheme: colorScheme)
+            } label: {
+                Image("ic_mode")
+                    .resizable()
+                    .renderingMode(.template)
+                    .frame(width: 32, height: 32)
+                    .foregroundStyle(Color.white)
+            }
+            .buttonStyle(PlainButtonStyle())
+            .padding()
+        }
+        .overlay(alignment: .bottomLeading) {
+            ZStack{
+                if let originalLanguage = selectedSeason?.original_language ?? tvShowDetails?.original_language {
+                    CNLabel(string: originalLanguage)
+                } else {
+                    RoundedRectangle(cornerRadius: .infinity)
+                        .frame(width: 72, height: 38)
+                        .redacted(reason: .placeholder)
+                }
+            }
+            .padding()
+        }
+        .overlay(alignment: .bottomTrailing) {
+            ZStack{
+                if let seasonsCount = tvShowDetails?.number_of_seasons {
+                    CNLabel(string: seasonsCount.formatted() + " seasons")
+                } else {
+                    RoundedRectangle(cornerRadius: .infinity)
+                        .frame(width: 72, height: 38)
+                        .redacted(reason: .placeholder)
+                }
+            }
+            .padding()
+        }
     }
 }
 
-#Preview {
-    TvShowDetailsView()
-}
+//#Preview {
+//    TvShowDetailsView()
+//}

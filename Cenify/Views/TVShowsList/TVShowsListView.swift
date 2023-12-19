@@ -89,12 +89,12 @@ struct TVShowsListView: View {
                         }
                         ForEach(medias) { media in
                             NavigationLink {
-                                MovieDetailsView(media.id, selectedScheme: $selectedScheme)
+                                TvShowDetailsView(media.id, selectedScheme: $selectedScheme)
                             } label: {
                                 MediaCard(media)
                                     .onAppear{
                                         if media.id == medias.last?.id {
-                                            model.loadMoreMovies {
+                                            model.loadMoreTvshows {
                                                 if searchQuery.isEmpty {
                                                     model.getTvShows()
                                                 }

@@ -21,7 +21,8 @@ class MovieRepo: MediaRepo {
     }
     
     static func getMovieDetail(_ id: Int) async throws -> MovieDetails {
-        return try await NetworkManager.shared.get(endpoint: Endpoint.movieDetails.rawValue.replacingOccurrences(of: "{{id}}", with: "\(id)"))
+        
+        return try await self.getMediaDetail(endpoint: Endpoint.movieDetails.rawValue, id: id)
     }
     
     static func searchMovies(query: String) async throws -> Response<[Movie]> {

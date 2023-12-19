@@ -18,6 +18,10 @@ class MediaRepo {
         return try await NetworkManager.shared.get(endpoint: endpoint, query: body)
     }
     
+    static func getMediaDetail<Model: MediaDetailProtocol>(endpoint: String, id: Int) async throws -> Model {
+        return try await NetworkManager.shared.get(endpoint: endpoint.replacingOccurrences(of: "{{id}}", with: "\(id)"))
+    }
+    
     static func searchMedia<Model: MediaProtocol>(endpoint: String, query: String) async throws -> Response<[Model]> {
         let body: [String: Any] = [
             "query": query
