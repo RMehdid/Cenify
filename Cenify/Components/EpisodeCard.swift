@@ -98,6 +98,7 @@ struct EpisodeCard: View {
         .padding(4)
         .background(.ultraThinMaterial.tertiary)
         .cornerRadius(8)
+        .padding(.horizontal)
         .shadow(radius: 4)
     }
 }

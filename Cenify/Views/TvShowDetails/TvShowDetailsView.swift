@@ -63,6 +63,7 @@ struct TvShowDetailsView: View {
                     Text(MovieDetails.dumbForShimmer.overview)
                         .redacted(reason: .placeholder)
                 }
+                .padding(.horizontal)
             case .success(let tvShowDetails):
                 ScrollView(showsIndicators: false) {
                     VStack {
@@ -84,7 +85,7 @@ struct TvShowDetailsView: View {
                                     }
                                 }
                             } label: {
-                               Label("Seasons", systemImage: "chevron.down")
+                                Label(selectedSeason?.name ?? "Seasons", systemImage: "chevron.down")
                             }
                             HStack{
                                 Text(selectedSeason?.name ?? tvShowDetails.title)
