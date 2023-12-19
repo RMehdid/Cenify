@@ -51,7 +51,6 @@
 		99D669102B31BF1E0064089D /* NetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D6690F2B31BF1E0064089D /* NetworkLogger.swift */; };
 		99D669122B31D5EE0064089D /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D669112B31D5EE0064089D /* Episode.swift */; };
 		99D669142B31D9B90064089D /* EpisodeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D669132B31D9B90064089D /* EpisodeCard.swift */; };
-		99D6691B2B3236750064089D /* ScrollDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D6691A2B3236750064089D /* ScrollDetector.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,7 +106,6 @@
 		99D6690F2B31BF1E0064089D /* NetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogger.swift; sourceTree = "<group>"; };
 		99D669112B31D5EE0064089D /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		99D669132B31D9B90064089D /* EpisodeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCard.swift; sourceTree = "<group>"; };
-		99D6691A2B3236750064089D /* ScrollDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollDetector.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,7 +259,6 @@
 				99A037D02B2702FB00964315 /* EmptyListView.swift */,
 				9959C39F2B2863B60051A069 /* CNLabel.swift */,
 				99D669132B31D9B90064089D /* EpisodeCard.swift */,
-				99D6691A2B3236750064089D /* ScrollDetector.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -461,7 +458,6 @@
 				99BBE4682B30F68300136ECD /* TVShowsListViewModel.swift in Sources */,
 				9959C3992B28575D0051A069 /* UIApplication.swift in Sources */,
 				99A037B42B26228A00964315 /* View.swift in Sources */,
-				99D6691B2B3236750064089D /* ScrollDetector.swift in Sources */,
 				99A0379C2B25CBDF00964315 /* NetworkManager.swift in Sources */,
 				99A037D12B2702FB00964315 /* EmptyListView.swift in Sources */,
 				99BBE4602B30F63C00136ECD /* DiscoverView.swift in Sources */,

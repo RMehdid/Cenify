@@ -36,69 +36,71 @@ struct EpisodeCard: View {
                                 startPoint: .top,
                                 endPoint: .bottom)
                         }
-                        .frame(width: 60, height: 60)
+                        .frame(width: 70, height: 70)
                         .scaledToFill()
                         .cornerRadius(8)
                 } else {
                     RoundedRectangle(cornerRadius: 8)
                         .fill(Color.gray)
-                        .frame(width: 60, height: 60)
+                        .frame(width: 70, height: 70)
                         .redacted(reason: .placeholder)
                 }
             }
             
-            VStack(alignment: .leading, spacing: 16){
-                VStack(alignment: .leading, spacing: 6){
-                    HStack{
-                        if let title = episode?.name {
-                            Text(title)
-                                .font(.system(size: 20, weight: .bold))
-                                .multilineTextAlignment(.leading)
+            VStack(alignment: .leading, spacing: 6){
+                HStack{
+                    if let title = episode?.name {
+                        Text(title)
+                            .font(.system(size: 20, weight: .bold))
+                            .multilineTextAlignment(.leading)
+                    } else {
+                        Text(Movie.dumbForShimmer.title)
+                            .redacted(reason: .placeholder)
+                    }
+                    Spacer()
+                    HStack(spacing: 6){
+                        if episode != nil {
+                            Image("ic_star")
+                                .resizable()
+                                .renderingMode(.template)
+                                .frame(width: 16, height: 16)
+                        }
+                        
+                        if let vote_average = episode?.vote_average {
+                            Text(vote_average.toString)
+                                .font(.system(size: 12, weight: .semibold))
                         } else {
-                            Text(Movie.dumbForShimmer.title)
+                            Text(Movie.dumbForShimmer.vote_average.toString)
                                 .redacted(reason: .placeholder)
                         }
-                        Spacer()
-                        HStack(spacing: 6){
-                            if episode != nil {
-                                Image("ic_star")
-                                    .resizable()
-                                    .renderingMode(.template)
-                                    .frame(width: 16, height: 16)
-                            }
-                            
-                            if let vote_average = episode?.vote_average {
-                                Text(vote_average.toString)
-                                    .font(.system(size: 12, weight: .semibold))
-                            } else {
-                                Text(Movie.dumbForShimmer.vote_average.toString)
-                                    .redacted(reason: .placeholder)
-                            }
-                        }
                     }
-                    if let date = episode?.air_date {
-                        Text(date)
-                            .font(.system(size: 12, weight: .medium))
-                    } else {
-                        Text(Movie.dumbForShimmer.date)
-                            .redacted(reason: .placeholder)
-                    }
-                    
-                    if let overview = episode?.overview {
-                        Text(overview.prefix(60) + "...")
-                            .multilineTextAlignment(.leading)
-                            .font(.system(size: 12, weight: .medium))
-                    } else {
-                        Text(Movie.dumbForShimmer.date)
-                            .redacted(reason: .placeholder)
-                    }
+                }
+                if let date = episode?.air_date {
+                    Text(date)
+                        .font(.system(size: 12, weight: .medium))
+                } else {
+                    Text(Movie.dumbForShimmer.date)
+                        .redacted(reason: .placeholder)
+                }
+                
+                if let overview = episode?.overview {
+                    Text(overview.prefix(60) + "...")
+                        .multilineTextAlignment(.leading)
+                        .font(.system(size: 12, weight: .medium))
+                } else {
+                    Text(Movie.dumbForShimmer.date)
+                        .redacted(reason: .placeholder)
                 }
             }
         }
-        .padding(4)
+        .padding(8)
         .background(.ultraThinMaterial.tertiary)
         .cornerRadius(8)
         .padding(.horizontal)
         .shadow(radius: 4)
     }
+}
+
+#Preview {
+    TvShowDetailsView(1622, selectedScheme: .constant(.dark))
 }
