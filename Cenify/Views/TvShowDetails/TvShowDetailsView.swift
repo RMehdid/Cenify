@@ -30,8 +30,14 @@ struct TvShowDetailsView: View {
     
     @State private var scrollPosition: CGFloat = 0
     
-    private var isHeader: Bool {
+    @State private var overviewMaxCount: Int = 100
+    
+    private var isBecomingHeader: Bool {
         return scrollPosition > 120
+    }
+    
+    private var isHeader: Bool {
+        return scrollPosition == 300
     }
     
     init(_ id: Int, selectedScheme: Binding<ColorScheme?>) {
@@ -80,14 +86,14 @@ struct TvShowDetailsView: View {
                 .padding(.horizontal)
             case .success(let tvShowDetails):
                 ScrollView(showsIndicators: false) {
-                    LazyVStack {
+                    LazyVStack(alignment: .leading) {
                         posterCard(tvShowDetails: tvShowDetails)
                             .padding(.horizontal)
                             .background(GeometryReader {
                                 Color.clear.preference(key: ViewOffsetKey.self,
                                         value: -$0.frame(in: .named("scroll")).origin.y)
                             })
-                            .scaleEffect(scrollPosition > 120 ? 1.15 : 1)
+                            .scaleEffect(isBecomingHeader ? 1.15 : 1)
                         VStack(alignment: .leading){
                             ScrollView(.horizontal, showsIndicators: false) {
                                 HStack{
@@ -125,9 +131,18 @@ struct TvShowDetailsView: View {
                         }
                         .padding(.horizontal)
                         
-                        Text(selectedSeason?.overview ?? tvShowDetails.overview)
-                            .font(.system(size: 14, weight: .regular))
-                            .padding(.horizontal)
+                        Button {
+                            if overviewMaxCount == 100 {
+                                overviewMaxCount = .max
+                            } else {
+                                overviewMaxCount = 100
+                            }
+                        } label: {
+                            Text(String(selectedSeason?.overview.prefix(overviewMaxCount) ?? tvShowDetails.overview.prefix(overviewMaxCount)))
+                                .font(.system(size: 14, weight: .regular))
+                                .padding(.horizontal)
+                        }
+                        .buttonStyle(PlainButtonStyle())
                         
                         switch model.episodesUiState {
                         case .idle, .empty, .failure:
@@ -193,7 +208,7 @@ struct TvShowDetailsView: View {
             }
         }
         .frame(height: UIScreen.main.bounds.height * 0.6)
-        .cornerRadius(isHeader ? 0 : 26)
+        .cornerRadius(isBecomingHeader ? 0 : 26)
         .overlay(alignment: .topTrailing) {
             Button(action: toggleScheme) {
                 Image("ic_mode")
@@ -216,7 +231,7 @@ struct TvShowDetailsView: View {
                 }
             }
             .padding()
-            .opacity(isHeader ? 0 : 1)
+            .opacity(isBecomingHeader ? 0 : 1)
         }
         .overlay(alignment: .bottomTrailing) {
             ZStack{
@@ -229,7 +244,7 @@ struct TvShowDetailsView: View {
                 }
             }
             .padding()
-            .opacity(isHeader ? 0 : 1)
+            .opacity(isBecomingHeader ? 0 : 1)
         }
     }
     
