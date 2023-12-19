@@ -44,6 +44,9 @@
 		99BBE46A2B30F97700136ECD /* MovieRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BBE4692B30F97700136ECD /* MovieRepo.swift */; };
 		99BBE46D2B30F98700136ECD /* TVRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BBE46C2B30F98700136ECD /* TVRepo.swift */; };
 		99BF79642B271DDF00FB628D /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 99BF79632B271DDF00FB628D /* loading.json */; };
+		99D669002B31A0930064089D /* TvShowDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D668FF2B31A0930064089D /* TvShowDetailsView.swift */; };
+		99D669022B31A0A30064089D /* TvShowDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D669012B31A0A30064089D /* TvShowDetailViewModel.swift */; };
+		99D669042B31A23E0064089D /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D669032B31A23E0064089D /* ColorScheme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +95,9 @@
 		99BBE4692B30F97700136ECD /* MovieRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRepo.swift; sourceTree = "<group>"; };
 		99BBE46C2B30F98700136ECD /* TVRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVRepo.swift; sourceTree = "<group>"; };
 		99BF79632B271DDF00FB628D /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
+		99D668FF2B31A0930064089D /* TvShowDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvShowDetailsView.swift; sourceTree = "<group>"; };
+		99D669012B31A0A30064089D /* TvShowDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvShowDetailViewModel.swift; sourceTree = "<group>"; };
+		99D669032B31A23E0064089D /* ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +185,7 @@
 				99A037972B25CB9C00964315 /* MoviesList */,
 				99BBE4662B30F66D00136ECD /* TVShowsList */,
 				99A037982B25CBA600964315 /* MovieDetails */,
+				99D668FE2B31A07A0064089D /* TvShowDetails */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -257,6 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				99A037B32B26228900964315 /* View.swift */,
+				99D669032B31A23E0064089D /* ColorScheme.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -316,6 +324,15 @@
 				99BF79632B271DDF00FB628D /* loading.json */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		99D668FE2B31A07A0064089D /* TvShowDetails */ = {
+			isa = PBXGroup;
+			children = (
+				99D668FF2B31A0930064089D /* TvShowDetailsView.swift */,
+				99D669012B31A0A30064089D /* TvShowDetailViewModel.swift */,
+			);
+			path = TvShowDetails;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -402,6 +419,7 @@
 				99A037C62B265B4000964315 /* Double.swift in Sources */,
 				99A037B12B260DD700964315 /* BackgroundEffect.swift in Sources */,
 				99BBE4652B30F66800136ECD /* TVShowsListView.swift in Sources */,
+				99D669002B31A0930064089D /* TvShowDetailsView.swift in Sources */,
 				9959C39D2B2861250051A069 /* Array.swift in Sources */,
 				99BBE45C2B30F39A00136ECD /* MediaProtocol.swift in Sources */,
 				99BBE46D2B30F98700136ECD /* TVRepo.swift in Sources */,
@@ -420,12 +438,14 @@
 				9959C3A02B2863B60051A069 /* CNLabel.swift in Sources */,
 				99BBE46A2B30F97700136ECD /* MovieRepo.swift in Sources */,
 				99A037A42B25CD9B00964315 /* UiState.swift in Sources */,
+				99D669022B31A0A30064089D /* TvShowDetailViewModel.swift in Sources */,
 				99BBE4682B30F68300136ECD /* TVShowsListViewModel.swift in Sources */,
 				9959C3992B28575D0051A069 /* UIApplication.swift in Sources */,
 				99A037B42B26228A00964315 /* View.swift in Sources */,
 				99A0379C2B25CBDF00964315 /* NetworkManager.swift in Sources */,
 				99A037D12B2702FB00964315 /* EmptyListView.swift in Sources */,
 				99BBE4602B30F63C00136ECD /* DiscoverView.swift in Sources */,
+				99D669042B31A23E0064089D /* ColorScheme.swift in Sources */,
 				99A037A12B25CCBE00964315 /* Movie.swift in Sources */,
 				99A0379A2B25CBCC00964315 /* MovieDetailsView.swift in Sources */,
 				99A037C92B26701200964315 /* BackHandler.swift in Sources */,

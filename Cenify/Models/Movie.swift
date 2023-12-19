@@ -10,7 +10,7 @@ import Foundation
 struct Movie: MediaProtocol {
     let id: Int
     let title: String
-    let release_date: String
+    let date: String
     let poster_path: String?
     let vote_average: Double
     
@@ -22,5 +22,11 @@ struct Movie: MediaProtocol {
         return imageBaseUrl + size + poster_path
     }
     
-    static let dumbForShimmer = Movie(id: 0, title: "dumb title", release_date: "2020", poster_path: "/hdgfhjs.png", vote_average: 7.7)
+    static let dumbForShimmer = Movie(id: 0, title: "dumb title", date: "2020", poster_path: "/hdgfhjs.png", vote_average: 7.7)
+    
+    enum CodingKeys: String, CodingKey {
+        case id, poster_path, vote_average
+        case title = "title"
+        case date = "release_date"
+    }
 }

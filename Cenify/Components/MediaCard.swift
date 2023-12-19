@@ -45,6 +45,13 @@ struct MediaCard<T: MediaProtocol>: View {
                         Text(Movie.dumbForShimmer.title)
                             .redacted(reason: .placeholder)
                     }
+                    if let date = media?.date {
+                        Text(date)
+                            .font(.system(size: 12, weight: .medium))
+                    } else {
+                        Text(Movie.dumbForShimmer.date)
+                            .redacted(reason: .placeholder)
+                    }
                 }
                 
                 HStack(spacing: 6){

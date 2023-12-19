@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MovieDetails: Decodable, Identifiable {
+struct MovieDetails: MediaDetailProtocol {
     
     let id: Int
     let title: String

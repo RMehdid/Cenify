@@ -16,10 +16,6 @@ class MovieRepo: MediaRepo {
     }
     
     static func getMovies(genres: [Genre] = [], page: Int) async throws -> Response<[Movie]> {
-        let body : [String: Any] = [
-            "page": page,
-            "with_genres": genres.stringValue(",")
-        ]
         
         return try await self.getMedia(endpoint: Endpoint.moviesList.rawValue, genres: genres, page: page)
     }
@@ -29,9 +25,6 @@ class MovieRepo: MediaRepo {
     }
     
     static func searchMovies(query: String) async throws -> Response<[Movie]> {
-        let body: [String: Any] = [
-            "query": query
-        ]
         
         return try await self.searchMedia(endpoint: Endpoint.searchMovies.rawValue, query: query)
     }
