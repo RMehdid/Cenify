@@ -8,6 +8,14 @@
 import SwiftUI
 import Kingfisher
 
+struct ViewOffsetKey: PreferenceKey {
+    typealias Value = CGFloat
+    static var defaultValue = CGFloat.zero
+    static func reduce(value: inout Value, nextValue: () -> Value) {
+        value += nextValue()
+    }
+}
+
 struct TvShowDetailsView: View {
     private let id: Int
     
@@ -19,6 +27,12 @@ struct TvShowDetailsView: View {
     @Environment(\.colorScheme) private var colorScheme
     
     @State private var selectedSeason: Season?
+    
+    @State private var scrollPosition: CGFloat = 0
+    
+    private var isHeader: Bool {
+        return scrollPosition > 120
+    }
     
     init(_ id: Int, selectedScheme: Binding<ColorScheme?>) {
         self.id = id
@@ -66,9 +80,14 @@ struct TvShowDetailsView: View {
                 .padding(.horizontal)
             case .success(let tvShowDetails):
                 ScrollView(showsIndicators: false) {
-                    VStack {
+                    LazyVStack {
                         posterCard(tvShowDetails: tvShowDetails)
                             .padding(.horizontal)
+                            .background(GeometryReader {
+                                Color.clear.preference(key: ViewOffsetKey.self,
+                                        value: -$0.frame(in: .named("scroll")).origin.y)
+                            })
+                            .scaleEffect(scrollPosition > 120 ? 1.15 : 1)
                         VStack(alignment: .leading){
                             ScrollView(.horizontal, showsIndicators: false) {
                                 HStack{
@@ -123,7 +142,11 @@ struct TvShowDetailsView: View {
                             }
                         }
                     }
+                    .onPreferenceChange(ViewOffsetKey.self) { newValue in
+                        withAnimation { self.scrollPosition = newValue }
+                    }
                 }
+                .coordinateSpace(name: "scroll")
                 
             case .failure(let error):
                 VStack{
@@ -164,13 +187,13 @@ struct TvShowDetailsView: View {
                             endPoint: .bottom)
                     }
             } else {
-                RoundedRectangle(cornerRadius: 8)
+                RoundedRectangle(cornerRadius: isHeader ? 0 : 26)
                     .fill(Color.gray)
                     .redacted(reason: .placeholder)
             }
         }
         .frame(height: UIScreen.main.bounds.height * 0.6)
-        .cornerRadius(26)
+        .cornerRadius(isHeader ? 0 : 26)
         .overlay(alignment: .topTrailing) {
             Button(action: toggleScheme) {
                 Image("ic_mode")
@@ -193,6 +216,7 @@ struct TvShowDetailsView: View {
                 }
             }
             .padding()
+            .opacity(isHeader ? 0 : 1)
         }
         .overlay(alignment: .bottomTrailing) {
             ZStack{
@@ -205,6 +229,7 @@ struct TvShowDetailsView: View {
                 }
             }
             .padding()
+            .opacity(isHeader ? 0 : 1)
         }
     }
     
@@ -229,6 +254,6 @@ struct TvShowDetailsView: View {
         }
 }
 
-//#Preview {
-//    TvShowDetailsView()
-//}
+#Preview {
+    TvShowDetailsView(1622, selectedScheme: .constant(.dark))
+}
