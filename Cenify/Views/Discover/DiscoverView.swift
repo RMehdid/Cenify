@@ -15,27 +15,47 @@ struct DiscoverView: View {
     
     @State private var selectedScheme: ColorScheme?
     
+    private enum Tab: Int {
+        case movies
+        case tvShows
+    }
+    
+    @State private var selectedTab = Tab.movies
+    
     var body: some View {
         NavigationStack {
-            TabView {
+            TabView(selection: $selectedTab) {
                 MoviesListView(selectedScheme: $selectedScheme)
                     .tabItem {
-                        Label("Movies", image: "ic_movie")
+                        Label("Movies", systemImage: "popcorn.fill")
+                            .frame(width: 32, height: 32)
                     }
+                    .tag(Tab.movies)
+                    .backgroundEffect()
                 TVShowsListView(selectedScheme: $selectedScheme)
                     .tabItem {
-                        Label("TV Shows", image: "ic_tv_show")
+                        Label("TV Shows", systemImage: "play.tv.fill")
+                            .frame(width: 32, height: 32)
                     }
+                    .tag(Tab.tvShows)
+                    .backgroundEffect()
             }
-        }
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                navbar()
+            .toolbarBackground(.ultraThinMaterial, for: .bottomBar)
+            .buttonStyle(PlainButtonStyle())
+            .tint(.primary)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    navbar()
+                }
             }
         }
         .preferredColorScheme(selectedScheme)
         .onAppear {
+            let tabBarAppearance = UITabBarAppearance()
+            tabBarAppearance.configureWithDefaultBackground()
+            UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+            
             let appearance = UINavigationBarAppearance()
             appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
             appearance.backgroundColor = UIColor(Color.primary.opacity(0.05))
@@ -82,4 +102,8 @@ struct DiscoverView: View {
             }
         }
     }
+}
+
+#Preview {
+    DiscoverView()
 }

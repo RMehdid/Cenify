@@ -24,6 +24,7 @@ struct MoviesListView: View {
     
     var body: some View {
         listBuilder()
+//            .backgroundEffect()
             .searchable(text: $searchQuery)
             .onChange(of: searchQuery) { newQuery in
                 if searchQuery.count >= 2 {
@@ -32,8 +33,7 @@ struct MoviesListView: View {
                     model.getMovies()
                 }
             }
-            .ignoresSafeArea(.all, edges: .bottom)
-            .backgroundEffect()
+        
     }
     
     @ViewBuilder

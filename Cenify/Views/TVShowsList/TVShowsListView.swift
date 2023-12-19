@@ -30,8 +30,6 @@ struct TVShowsListView: View {
                     model.getTvShows()
                 }
             }
-            .ignoresSafeArea(.all, edges: .bottom)
-            .backgroundEffect()
     }
     
     @ViewBuilder
