@@ -30,4 +30,10 @@ struct TvShowDetail: MediaDetailProtocol {
     }
     
     static let dumbForShimmer = MovieDetails(id: 0, title: "dumb movie name", release_date: "2010-10-10", overview: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis, quaerat molestiae eveniet odit animi veritatis eligendi necessitatibus inventore est fuga ex consequatur modi iusto, ipsum, velit tempora ducimus dicta. Velit.", poster_path: "/jhfgjhsdfbsdjhf.png", vote_average: 7.77, status: "RELEASED", original_language: "EN", genres: [Genre(id: 1, name: "Fantasy"), Genre(id: 2, name: "Advanture"), Genre(id: 3, name: "Science Fiction"), Genre(id: 4, name: "Action")])
+    
+    enum CodingKeys: String, CodingKey {
+        case id, overview, poster_path, vote_average, status, original_language, number_of_seasons, genres, seasons
+        case title = "name"
+        case release_date = "first_air_date"
+    }
 }

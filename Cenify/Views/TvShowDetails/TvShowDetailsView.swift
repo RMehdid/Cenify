@@ -75,6 +75,15 @@ struct TvShowDetailsView: View {
                                     }
                                 }
                             }
+                            Menu {
+                                ForEach(tvShowDetails.seasons) { season in
+                                    Button(season.name) {
+                                        self.selectedSeason = season
+                                    }
+                                }
+                            } label: {
+                               Label("Seasons", systemImage: "chevron.down")
+                            }
                             HStack{
                                 Text(selectedSeason?.name ?? tvShowDetails.title)
                                     .font(.system(size: 32, weight: .bold))
@@ -99,7 +108,15 @@ struct TvShowDetailsView: View {
                 }
                 
             case .failure(let error):
-                error.errorView()
+                VStack{
+                    Spacer()
+                    HStack{
+                        Spacer()
+                        error.errorView()
+                        Spacer()
+                    }
+                    Spacer()
+                }
             }
         }
         .padding(.horizontal)
@@ -138,9 +155,7 @@ struct TvShowDetailsView: View {
         .frame(height: UIScreen.main.bounds.height * 0.6)
         .cornerRadius(26)
         .overlay(alignment: .topTrailing) {
-            Button {
-                selectedScheme.toggleScheme(availableScheme: colorScheme)
-            } label: {
+            Button(action: toggleScheme) {
                 Image("ic_mode")
                     .resizable()
                     .renderingMode(.template)
@@ -152,7 +167,7 @@ struct TvShowDetailsView: View {
         }
         .overlay(alignment: .bottomLeading) {
             ZStack{
-                if let originalLanguage = selectedSeason?.original_language ?? tvShowDetails?.original_language {
+                if let originalLanguage = tvShowDetails?.original_language {
                     CNLabel(string: originalLanguage)
                 } else {
                     RoundedRectangle(cornerRadius: .infinity)
@@ -175,6 +190,26 @@ struct TvShowDetailsView: View {
             .padding()
         }
     }
+    
+    private func toggleScheme() {
+            withAnimation {
+                switch selectedScheme {
+                case .light:
+                    self.selectedScheme = .dark
+                case .dark:
+                    self.selectedScheme = .light
+                case nil:
+                    switch colorScheme {
+                    case .light:
+                        self.selectedScheme = .dark
+                    case .dark:
+                        self.selectedScheme = .light
+                    default: break
+                    }
+                default: break
+                }
+            }
+        }
 }
 
 //#Preview {

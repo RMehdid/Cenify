@@ -72,9 +72,7 @@ struct DiscoverView: View {
             Text("Welcome to Samy’s Collection!")
                 .font(.system(size: 20, weight: .bold))
             Spacer()
-            Button {
-                selectedScheme.toggleScheme(availableScheme: colorScheme)
-            } label: {
+            Button(action: toggleScheme) {
                 Image("ic_mode")
                     .resizable()
                     .renderingMode(.template)
@@ -84,6 +82,26 @@ struct DiscoverView: View {
         }
         .padding(.vertical)
     }
+    
+    private func toggleScheme() {
+            withAnimation {
+                switch selectedScheme {
+                case .light:
+                    self.selectedScheme = .dark
+                case .dark:
+                    self.selectedScheme = .light
+                case nil:
+                    switch colorScheme {
+                    case .light:
+                        self.selectedScheme = .dark
+                    case .dark:
+                        self.selectedScheme = .light
+                    default: break
+                    }
+                default: break
+                }
+            }
+        }
 }
 
 #Preview {

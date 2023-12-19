@@ -127,7 +127,11 @@ struct TVShowsListView: View {
                         }
                     }
                     Spacer()
-                    error.errorView()
+                    HStack{
+                        Spacer()
+                        error.errorView()
+                        Spacer()
+                    }
                     Spacer()
                 }
                 .padding(.vertical)

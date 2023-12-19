@@ -12,6 +12,8 @@ actor NetworkManager: GlobalActor {
     
     public private(set) static var shared = NetworkManager()
     
+    let session = Session(eventMonitors: [NetworkLogger()])
+    
     private var baseUrl: String {
         return Bundle.main.object(forInfoDictionaryKey: "BaseUrl") as? String ?? ""
     }
@@ -30,18 +32,14 @@ actor NetworkManager: GlobalActor {
     private let timout: Double = 15
     
     public func get<Model: Decodable>(endpoint: String, query: [String: Any]? = nil) async throws -> Model {
-        
-        debugPrint("http:url: \(baseUrl)\(endpoint)")
-        
         return try await withCheckedThrowingContinuation { continuation in
-            AF.request(
+            session.request(
                 baseUrl + endpoint,
                 parameters: query,
                 headers: headers,
                 requestModifier: { $0.timeoutInterval = self.timout }
             )
             .responseData { response in
-                debugPrint("http:res: \(response.debugDescription)")
                 
                 guard let status = response.response?.statusCode else {
                     continuation.resume(throwing: CNError.badReponse)

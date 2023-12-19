@@ -8,7 +8,7 @@
 import Foundation
 
 struct Season: Decodable, Identifiable {
-    let air_date: String
+    let air_date: String?
     let episode_count: Int
     let id: Int
     let name: String
@@ -16,7 +16,6 @@ struct Season: Decodable, Identifiable {
     let poster_path: String?
     let season_number: Int
     let vote_average: Double
-    let original_language: String
     
     func imageLoader(size: String) -> String {
         guard let poster_path = poster_path, let imageBaseUrl = Bundle.main.object(forInfoDictionaryKey: "ImageBaseUrl") as? String else {
