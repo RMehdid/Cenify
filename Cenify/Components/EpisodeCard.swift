@@ -20,25 +20,31 @@ struct EpisodeCard: View {
     
     var body: some View {
         HStack{
-            if let imageUrl = episode?.imageLoader(size: "w500"), let url = URL(string: imageUrl) {
-                KFImage(url)
-                    .resizable()
-                    .placeholder { progress in
-                        Color.gray
-                    }
-                    .overlay{
-                        LinearGradient(
-                            gradient: Gradient(stops: [
-                                .init(color: Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)), location: 0),
-                                .init(color: Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)), location: 0.5),
-                                .init(color: Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.7)), location: 1)]),
-                            startPoint: .top,
-                            endPoint: .bottom)
-                    }
-            } else {
-                RoundedRectangle(cornerRadius: 8)
-                    .fill(Color.gray)
-                    .redacted(reason: .placeholder)
+            ZStack{
+                if let imageUrl = episode?.imageLoader(size: "w500"), let url = URL(string: imageUrl) {
+                    KFImage(url)
+                        .resizable()
+                        .placeholder { progress in
+                            Color.gray
+                        }
+                        .overlay{
+                            LinearGradient(
+                                gradient: Gradient(stops: [
+                                    .init(color: Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)), location: 0),
+                                    .init(color: Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)), location: 0.5),
+                                    .init(color: Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.7)), location: 1)]),
+                                startPoint: .top,
+                                endPoint: .bottom)
+                        }
+                        .frame(width: 60, height: 60)
+                        .scaledToFill()
+                        .cornerRadius(8)
+                } else {
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(Color.gray)
+                        .frame(width: 60, height: 60)
+                        .redacted(reason: .placeholder)
+                }
             }
             
             VStack(alignment: .leading, spacing: 16){
@@ -79,7 +85,7 @@ struct EpisodeCard: View {
                     }
                     
                     if let overview = episode?.overview {
-                        Text(overview.prefix(100))
+                        Text(overview.prefix(60) + "...")
                             .multilineTextAlignment(.leading)
                             .font(.system(size: 12, weight: .medium))
                     } else {
@@ -88,9 +94,8 @@ struct EpisodeCard: View {
                     }
                 }
             }
-            .padding(8)
         }
-        .padding(10)
+        .padding(4)
         .background(.ultraThinMaterial.tertiary)
         .cornerRadius(8)
         .shadow(radius: 4)

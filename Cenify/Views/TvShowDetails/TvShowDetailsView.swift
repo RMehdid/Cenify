@@ -67,6 +67,7 @@ struct TvShowDetailsView: View {
                 ScrollView(showsIndicators: false) {
                     VStack {
                         posterCard(tvShowDetails: tvShowDetails)
+                            .padding(.horizontal)
                         VStack(alignment: .leading){
                             ScrollView(.horizontal, showsIndicators: false) {
                                 HStack{
@@ -79,6 +80,7 @@ struct TvShowDetailsView: View {
                                 ForEach(tvShowDetails.seasons) { season in
                                     Button(season.name) {
                                         self.selectedSeason = season
+                                        model.getEpisodes(tvShowId: tvShowDetails.id, seasonNum: season.season_number)
                                     }
                                 }
                             } label: {
@@ -101,9 +103,24 @@ struct TvShowDetailsView: View {
                             Text(selectedSeason?.air_date ?? tvShowDetails.release_date)
                                 .font(.system(size: 16, weight: .regular))
                         }
+                        .padding(.horizontal)
                         
                         Text(selectedSeason?.overview ?? tvShowDetails.overview)
                             .font(.system(size: 14, weight: .regular))
+                            .padding(.horizontal)
+                        
+                        switch model.episodesUiState {
+                        case .idle, .empty, .failure:
+                            EmptyView()
+                        case .loading:
+                            ForEach(0..<4, id: \.hashValue) {_ in
+                                EpisodeCard()
+                            }
+                        case .success(let episodes):
+                            ForEach(episodes) { episode in
+                                EpisodeCard(episode: episode)
+                            }
+                        }
                     }
                 }
                 
@@ -119,7 +136,6 @@ struct TvShowDetailsView: View {
                 }
             }
         }
-        .padding(.horizontal)
         .onAppear {
             model.getTvShowDetail(id)
         }
