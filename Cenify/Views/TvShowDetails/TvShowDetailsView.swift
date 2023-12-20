@@ -112,6 +112,7 @@ struct TvShowDetailsView: View {
                             } label: {
                                 Label(selectedSeason?.name ?? "Seasons", systemImage: "chevron.down")
                             }
+                            .buttonStyle(PlainButtonStyle())
                             HStack{
                                 Text(selectedSeason?.name ?? tvShowDetails.title)
                                     .font(.system(size: 32, weight: .bold))
