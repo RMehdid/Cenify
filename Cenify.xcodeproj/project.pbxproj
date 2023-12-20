@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9958FE712B33384900D5B370 /* RetryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9958FE702B33384900D5B370 /* RetryButton.swift */; };
 		9959C3952B2770720051A069 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9959C3942B2770720051A069 /* Genre.swift */; };
 		9959C3992B28575D0051A069 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9959C3982B28575D0051A069 /* UIApplication.swift */; };
 		9959C39D2B2861250051A069 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9959C39C2B2861250051A069 /* Array.swift */; };
@@ -54,6 +55,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9958FE702B33384900D5B370 /* RetryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetryButton.swift; sourceTree = "<group>"; };
 		9959C3942B2770720051A069 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		9959C3982B28575D0051A069 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		9959C39C2B2861250051A069 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				99A037D02B2702FB00964315 /* EmptyListView.swift */,
 				9959C39F2B2863B60051A069 /* CNLabel.swift */,
 				99D669132B31D9B90064089D /* EpisodeCard.swift */,
+				9958FE702B33384900D5B370 /* RetryButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 				99A0379E2B25CC4C00964315 /* MediaRepo.swift in Sources */,
 				99A037CD2B26F57200964315 /* FailView.swift in Sources */,
 				99A037962B25CB9400964315 /* MoviesListViewModel.swift in Sources */,
+				9958FE712B33384900D5B370 /* RetryButton.swift in Sources */,
 				99A037C42B26545F00964315 /* MovieDetailsViewModel.swift in Sources */,
 				99BBE4632B30F64E00136ECD /* DiscoverViewModel.swift in Sources */,
 				9959C3A02B2863B60051A069 /* CNLabel.swift in Sources */,
