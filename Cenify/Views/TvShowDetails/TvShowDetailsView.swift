@@ -37,7 +37,7 @@ struct TvShowDetailsView: View {
     }
     
     private var isHeader: Bool {
-        return scrollPosition == 300
+        return scrollPosition >= 450
     }
     
     init(_ id: Int, selectedScheme: Binding<ColorScheme?>) {
@@ -209,7 +209,7 @@ struct TvShowDetailsView: View {
         }
         .frame(height: UIScreen.main.bounds.height * 0.6)
         .cornerRadius(isBecomingHeader ? 0 : 26)
-        .overlay(alignment: .topTrailing) {
+        .overlay(alignment: isHeader ? .bottomTrailing : .topTrailing) {
             Button(action: toggleScheme) {
                 Image("ic_mode")
                     .resizable()
