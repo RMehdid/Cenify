@@ -32,10 +32,20 @@ actor NetworkManager: GlobalActor {
     private let timout: Double = 15
     
     public func get<Model: Decodable>(endpoint: String, query: [String: Any]? = nil) async throws -> Model {
+        var body = [String: Any]()
+        
+        if let query = query {
+            for snapshot in query {
+                body[snapshot.key] = snapshot.value
+            }
+        }
+        
+        body["languege"] = Locale.current.identifier
+        
         return try await withCheckedThrowingContinuation { continuation in
             session.request(
                 baseUrl + endpoint,
-                parameters: query,
+                parameters: body,
                 headers: headers,
                 requestModifier: { $0.timeoutInterval = self.timout }
             )
