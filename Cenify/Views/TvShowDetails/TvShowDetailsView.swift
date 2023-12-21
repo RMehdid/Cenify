@@ -182,6 +182,9 @@ struct TvShowDetailsView: View {
         .navigationBarHidden(true)
         .backgroundEffect()
         .backOnSwipe(presentationMode: presentationMode)
+        .refreshable {
+            model.getTvShowDetail(id)
+        }
     }
     
     @ViewBuilder

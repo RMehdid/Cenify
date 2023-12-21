@@ -32,6 +32,9 @@ struct MoviesListView: View {
                     model.getMovies()
                 }
             }
+            .refreshable {
+                model.getMovies(preferredGenre: selectedGenres)
+            }
         
     }
     

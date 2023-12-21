@@ -30,6 +30,9 @@ struct TVShowsListView: View {
                     model.getTvShows()
                 }
             }
+            .refreshable {
+                model.getTvShows(preferredGenre: selectedGenres)
+            }
     }
     
     @ViewBuilder

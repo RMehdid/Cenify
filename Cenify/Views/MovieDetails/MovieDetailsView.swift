@@ -116,6 +116,9 @@ struct MovieDetailsView: View {
         .navigationBarHidden(true)
         .backgroundEffect()
         .backOnSwipe(presentationMode: presentationMode)
+        .refreshable {
+            model.getMovieDetail(id)
+        }
     }
     
     @ViewBuilder
