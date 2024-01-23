@@ -18,15 +18,15 @@ enum CNError: Error {
     func errorView() -> some View {
         switch self {
         case .badReponse:
-            FailView(iconName: "ic_decoding", message: "Decoding error")
+            FailView(iconName: "ic_decoding", message: "Decoding error", retriable: false)
         case .badUrl:
-            FailView(iconName: "ic_code_error", message: "Bad url")
+            FailView(iconName: "ic_code_error", message: "Bad url", retriable: false)
         case .timout:
-            FailView(iconName: "ic_network_error", message: "No internet connection")
+            FailView(iconName: "ic_network_error", message: "No internet connection", retriable: true)
         case .forbidden:
-            FailView(iconName: "ic_profile_error", message: "Uou don’t have the right to be here")
+            FailView(iconName: "ic_profile_error", message: "Uou don’t have the right to be here", retriable: false)
         case .unknown:
-            FailView(iconName: "ic_decoding", message: "Something went wrong")
+            FailView(iconName: "ic_decoding", message: "Something went wrong", retriable: false)
         }
     }
 }

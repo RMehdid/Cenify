@@ -8,19 +8,19 @@
 import SwiftUI
 import Kingfisher
 
-struct MovieCard: View {
+struct MediaCard<T: MediaProtocol>: View {
     
-    private var movie: Movie?
+    private var media: T?
     
-    init(_ movie: Movie) {
-        self.movie = movie
+    init(_ media: T) {
+        self.media = media
     }
     
     init() {}
     
     var body: some View {
         HStack(spacing: 10){
-            if let imageUrl = movie?.imageLoader(size: "w500"), let url = URL(string: imageUrl) {
+            if let imageUrl = media?.imageLoader(size: "w500"), let url = URL(string: imageUrl) {
                 KFImage(url)
                     .resizable()
                     .placeholder { progress in
@@ -37,7 +37,7 @@ struct MovieCard: View {
             
             VStack(alignment: .leading, spacing: 16){
                 VStack(alignment: .leading, spacing: 6){
-                    if let title = movie?.title {
+                    if let title = media?.title {
                         Text(title)
                             .font(.system(size: 20, weight: .bold))
                             .multilineTextAlignment(.leading)
@@ -45,25 +45,24 @@ struct MovieCard: View {
                         Text(Movie.dumbForShimmer.title)
                             .redacted(reason: .placeholder)
                     }
-                    
-                    if let release_date = movie?.release_date {
-                        Text(release_date)
+                    if let date = media?.date {
+                        Text(date)
                             .font(.system(size: 12, weight: .medium))
                     } else {
-                        Text(Movie.dumbForShimmer.release_date)
+                        Text(Movie.dumbForShimmer.date)
                             .redacted(reason: .placeholder)
                     }
                 }
                 
                 HStack(spacing: 6){
-                    if movie != nil {
+                    if media != nil {
                         Image("ic_star")
                             .resizable()
                             .renderingMode(.template)
                             .frame(width: 20, height: 20)
                     }
                     
-                    if let vote_average = movie?.vote_average {
+                    if let vote_average = media?.vote_average {
                         Text(vote_average.toString)
                             .font(.system(size: 14, weight: .semibold))
                     } else {
@@ -83,5 +82,5 @@ struct MovieCard: View {
 }
 
 #Preview {
-    MoviesListView()
+    MediaCard<Movie>()
 }

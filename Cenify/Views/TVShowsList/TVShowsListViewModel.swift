@@ -1,48 +1,46 @@
 //
-//  MoviesListViewModel.swift
+//  TVShowsListViewModel.swift
 //  Cenify
 //
-//  Created by Samy Mehdid on 10/12/2023.
+//  Created by Samy Mehdid on 18/12/2023.
 //
 
 import Foundation
 
-extension MoviesListView {
-    final class Model: ObservableObject {
-        
-        @Published private(set) var moviesListUiState: UiState<[Movie]> = .loading
+extension TVShowsListView {
+    class Model: ObservableObject {
+        @Published private(set) var tvShowsListUiState: UiState<[TVShow]> = .loading
         @Published private(set) var genresListUiState: UiState<[Genre]> = .loading
         
         private var isLoadingMore = false
-        private var moviesList = [Movie]()
+        private var tvShowsList = [TVShow]()
         private var page: Int = 1
         
         init() {
-            self.getMovies()
+            self.getTvShows()
             self.getGenreList()
         }
         
-        
-        func getMovies(preferredGenre: [Genre] = []) {
+        func getTvShows(preferredGenre: [Genre] = []) {
             Task {
                 do {
                     
-                    moviesList.append(contentsOf: try await MovieRepo.getMovies(genres: preferredGenre, page: page).results)
+                    tvShowsList.append(contentsOf: try await TVRepo.getTvShows(genres: preferredGenre, page: page).results)
                     
                     DispatchQueue.main.async {
-                        guard !self.moviesList.isEmpty else {
-                            self.moviesListUiState = .empty
+                        guard !self.tvShowsList.isEmpty else {
+                            self.tvShowsListUiState = .empty
                             return
                         }
                         
-                        self.moviesListUiState = .success(self.moviesList)
+                        self.tvShowsListUiState = .success(self.tvShowsList)
                     }
                 } catch {
                     if isLoadingMore {
                         self.isLoadingMore = false
                     } else {
                         DispatchQueue.main.async {
-                            self.moviesListUiState = .failure(error as? CNError ?? .unknown)
+                            self.tvShowsListUiState = .failure(error as? CNError ?? .unknown)
                         }
                     }
                 }
@@ -50,31 +48,31 @@ extension MoviesListView {
         }
         
         func filterMovies(preferredGenre: [Genre]) {
-            self.moviesList = []
-            getMovies(preferredGenre: preferredGenre)
+            self.tvShowsList = []
+            getTvShows(preferredGenre: preferredGenre)
         }
         
         func searchMovies(query: String) {
-            self.moviesList = []
-            self.moviesListUiState = .loading
+            self.tvShowsList = []
+            self.tvShowsListUiState = .loading
             Task {
                 do {
-                    let searchedMovies = try await MovieRepo.searchMovies(query: query).results
+                    let searchedTvShows = try await TVRepo.searchTvShows(query: query).results
                     
                     DispatchQueue.main.async {
-                        guard !searchedMovies.isEmpty else {
-                            self.moviesListUiState = .empty
+                        guard !searchedTvShows.isEmpty else {
+                            self.tvShowsListUiState = .empty
                             return
                         }
                         
-                        self.moviesListUiState = .success(searchedMovies)
+                        self.tvShowsListUiState = .success(searchedTvShows)
                     }
                 } catch {
                     if self.isLoadingMore {
                         self.isLoadingMore = false
                     } else {
                         DispatchQueue.main.async {
-                            self.moviesListUiState = .failure(error as? CNError ?? .unknown)
+                            self.tvShowsListUiState = .failure(error as? CNError ?? .unknown)
                         }
                     }
                 }
@@ -84,7 +82,7 @@ extension MoviesListView {
         func getGenreList() {
             Task {
                 do {
-                    let genresList = try await MovieRepo.getGenres().genres
+                    let genresList = try await TVRepo.getGenres().genres
                     
                     DispatchQueue.main.async {
                         guard !genresList.isEmpty else {
@@ -106,7 +104,7 @@ extension MoviesListView {
             }
         }
         
-        func loadMoreMovies(_ forward: @escaping () -> Void) {
+        func loadMoreTvshows(_ forward: @escaping () -> Void) {
             page += 1
             self.isLoadingMore = true
             forward()

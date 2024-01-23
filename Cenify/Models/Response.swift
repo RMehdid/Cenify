@@ -14,3 +14,7 @@ struct Response<Model: Decodable>: Decodable {
 struct GenreResponse<Model: Decodable>: Decodable {
     let genres: Model
 }
+
+struct EpisodesResponse: Decodable {
+    let episodes: [Episode]
+}

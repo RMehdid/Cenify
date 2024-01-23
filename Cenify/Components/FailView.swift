@@ -12,6 +12,14 @@ struct FailView: View {
     var iconName: String
     var message: String
     
+    var retriable: Bool
+    
+    init(iconName: String, message: String, retriable: Bool) {
+        self.iconName = iconName
+        self.message = message
+        self.retriable = retriable
+    }
+    
     var body: some View {
         VStack{
             Image(iconName)
@@ -21,6 +29,10 @@ struct FailView: View {
             
             Text(message)
                 .font(.system(size: 20, weight: .bold))
+            
+            if retriable {
+                RetryButton()
+            }
         }
     }
 }

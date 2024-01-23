@@ -2,12 +2,12 @@
 //  MovieRepo.swift
 //  Cenify
 //
-//  Created by Samy Mehdid on 10/12/2023.
+//  Created by Samy Mehdid on 18/12/2023.
 //
 
 import Foundation
 
-class MovieRepo {
+class MovieRepo: MediaRepo {
     private enum Endpoint: String {
         case moviesList = "/discover/movie"
         case movieDetails = "/movie/{{id}}"
@@ -16,27 +16,21 @@ class MovieRepo {
     }
     
     static func getMovies(genres: [Genre] = [], page: Int) async throws -> Response<[Movie]> {
-        let body : [String: Any] = [
-            "page": page,
-            "with_genres": genres.stringValue(",")
-        ]
         
-        return try await NetworkManager.shared.get(endpoint: Endpoint.moviesList.rawValue, query: body)
+        return try await self.getMedia(endpoint: Endpoint.moviesList.rawValue, genres: genres, page: page)
     }
     
     static func getMovieDetail(_ id: Int) async throws -> MovieDetails {
-        return try await NetworkManager.shared.get(endpoint: Endpoint.movieDetails.rawValue.replacingOccurrences(of: "{{id}}", with: "\(id)"))
+        
+        return try await self.getMediaDetail(endpoint: Endpoint.movieDetails.rawValue, id: id)
     }
     
     static func searchMovies(query: String) async throws -> Response<[Movie]> {
-        let body: [String: Any] = [
-            "query": query
-        ]
         
-        return try await NetworkManager.shared.get(endpoint: Endpoint.searchMovies.rawValue, query: body)
+        return try await self.searchMedia(endpoint: Endpoint.searchMovies.rawValue, query: query)
     }
     
     static func getGenres() async throws -> GenreResponse<[Genre]> {
-        return try await NetworkManager.shared.get(endpoint: Endpoint.genresList.rawValue)
+        return try await self.getGenres(endpoint: Endpoint.genresList.rawValue)
     }
 }

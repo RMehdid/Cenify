@@ -1,15 +1,13 @@
 //
-//  MoviesListView.swift
+//  TVShowsListView.swift
 //  Cenify
 //
-//  Created by Samy Mehdid on 10/12/2023.
+//  Created by Samy Mehdid on 18/12/2023.
 //
 
 import SwiftUI
-import Combine
 
-struct MoviesListView: View {
-    
+struct TVShowsListView: View {
     @StateObject private var model = Model()
     
     @State private var searchQuery: String = ""
@@ -29,19 +27,18 @@ struct MoviesListView: View {
                 if searchQuery.count >= 2 {
                     model.searchMovies(query: newQuery)
                 } else if searchQuery == "" {
-                    model.getMovies()
+                    model.getTvShows()
                 }
             }
             .refreshable {
-                model.getMovies(preferredGenre: selectedGenres)
+                model.getTvShows(preferredGenre: selectedGenres)
             }
-        
     }
     
     @ViewBuilder
     private func listBuilder() -> some View {
         VStack(spacing: 0){
-            switch model.moviesListUiState {
+            switch model.tvShowsListUiState {
             case .idle:
                 EmptyView()
             case .empty:
@@ -70,7 +67,7 @@ struct MoviesListView: View {
             case .loading:
                 VStack{
                     ForEach(0..<4){ index in
-                        MediaCard<Movie>()
+                        MediaCard<TVShow>()
                     }
                     .padding(.horizontal)
                 }
@@ -95,14 +92,14 @@ struct MoviesListView: View {
                         }
                         ForEach(medias) { media in
                             NavigationLink {
-                                MovieDetailsView(media.id, selectedScheme: $selectedScheme)
+                                TvShowDetailsView(media.id, selectedScheme: $selectedScheme)
                             } label: {
                                 MediaCard(media)
                                     .onAppear{
                                         if media.id == medias.last?.id {
-                                            model.loadMoreMovies {
+                                            model.loadMoreTvshows {
                                                 if searchQuery.isEmpty {
-                                                    model.getMovies()
+                                                    model.getTvShows()
                                                 }
                                             }
                                         }
@@ -133,7 +130,11 @@ struct MoviesListView: View {
                         }
                     }
                     Spacer()
-                    error.errorView()
+                    HStack{
+                        Spacer()
+                        error.errorView()
+                        Spacer()
+                    }
                     Spacer()
                 }
                 .padding(.vertical)
@@ -150,8 +151,4 @@ struct MoviesListView: View {
         
         model.filterMovies(preferredGenre: selectedGenres)
     }
-}
-
-#Preview {
-    MoviesListView(selectedScheme: .constant(.light))
 }
